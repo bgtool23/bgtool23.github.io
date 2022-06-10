@@ -795,9 +795,9 @@
 								<div>
 									<div align='left' class='wrap-don'>
 									<br/><br/>
-										05/06/2021 Update v1.1.003
+										10/06/2022 Update v1.1.004
 										<ul class="fa-ul">
-											<li><i class="fa-li fa fa-chevron-circle-right"></i>Added support for 4.88 CEX<br/></li>
+											<li><i class="fa-li fa fa-chevron-circle-right"></i>Added support for 4.89 CEX<br/></li>
 											<li><i class="fa-li fa fa-chevron-circle-right"></i>Flash NC Exploit update v3.0<br/></li>
 											<li><i class="fa-li fa fa-chevron-circle-right"></i>FMM update v1.3.1<br/></li>
 											<li><i class="fa-li fa fa-chevron-circle-right"></i>JS Framework update v4.2<br/></li>
