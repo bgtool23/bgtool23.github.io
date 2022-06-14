@@ -1,6 +1,6 @@
 
 				<div id='memedit'>
-					<h2 align='right' class='tab-header'>Userland Memory Editor <span class='header-tiny-text'>v1.1</span></h2>
+					<h2 align='right' class='tab-header'>Пользовательский редактор памяти <span class='header-tiny-text'>v1.1</span></h2>
 					<div class='me-sizer'>
 						<table id ='mebox' class='window'>
 							<tbody class='ui-corner-all'>
@@ -9,9 +9,9 @@
 									<div class='spinner min-width-550' tabindex='0' >
 									<input id='spinner-text' class='spinner' value=''readonly />
 									<span class='spinner-go-button '>
-										<button id='btn_spinner' class='gui-item ui-button ui-corner-all ui-state-disabled'>Go to</button>
+										<button id='btn_spinner' class='gui-item ui-button ui-corner-all ui-state-disabled'>Перейти к</button>
 									</span>
-									</div></span><span id='spanmode' class='dir-ume' title='Disable UME Strict Mode to browse userland memory without restrictions.Keep in mind however that any attempt to access unallocated memory addresses with UME Strict Mode off will crash the console.'><div class='switch-wrapper  pointer' tabindex='0'><input type='checkbox' name='mode' id='memhexmode' value='true' checked='true' ></div></span></div></th>
+									</div></span><span id='spanmode' class='dir-ume' title='Отключите безопасный режим UME, чтобы просматривать пользовательскую память без ограничений. Однако имейте в виду, что любая попытка доступа к нераспределенным адресам памяти с отключенным строгим режимом UME приведет к сбою консоли.'><div class='switch-wrapper  pointer' tabindex='0'><input type='checkbox' name='mode' id='memhexmode' value='true' checked='true' ></div></span></div></th>
 								</tr>
 								<tr class='window-content ui-widget-content'>
 									<td align='justify' class='window-content ui-widget-content'>
@@ -53,9 +53,9 @@
 												</button>
 											</span>
 											<span class='dir-center min-width-210'>
-												<button id='btn1' class='gui-item ui-button ui-corner-all' title = 'Go to the memory offset provided in the textbox'>Go to Offset</button>
+												<button id='btn1' class='gui-item ui-button ui-corner-all' title = 'Перейти к смещению памяти, указанному в текстовом поле.'>Перейти к смещению</button>
 												<span class='top-2px'>
-													<input align='center' size='10' type='text' title = 'Enter a 32 bit userland memory address' id='offset' class='gui-item ui-widget ui-corner-all'/>
+													<input align='center' size='10' type='text' title = 'Введите 32-битный адрес памяти пользователя' id='offset' class='gui-item ui-widget ui-corner-all'/>
 												</span>
 											</span>
 											<span class='dir-right min-width-210'>
@@ -77,12 +77,12 @@
 				<script>
 					jQuery('.preloader').removeClass('ui-helper-hidden');
 					disable_GUI();
-					var current = {'id':'current','name':'Current Segment','start':0,'end':0,'offset':0};
+					var current = {'id':'current','name':'Текущий сегмент','start':0,'end':0,'offset':0};
 					var rec_offset=0;
 					var current_index =0;
-					var ranges = [{'id':'vsh_text','name':'VSH Text Segment','start':0x10000,'end':helper.vshgadgets_box.vshdata_seg,'offset':0},
-								{'id':'vsh_data','name':'VSH Data Segment','start':helper.vshgadgets_box.vshdata_seg,'end':0x800000,'offset':0},
-								{'id':'browser_container','name':'PS3 Browser Memory Container','start':0x80000000,'end':0x90000000,'offset':0}
+					var ranges = [{'id':'vsh_text','name':'Текстовый сегмент VSH','start':0x10000,'end':helper.vshgadgets_box.vshdata_seg,'offset':0},
+								{'id':'vsh_data','name':'Сегмент данных VSH','start':helper.vshgadgets_box.vshdata_seg,'end':0x800000,'offset':0},
+								{'id':'browser_container','name':'Контейнер памяти браузера PS3','start':0x80000000,'end':0x90000000,'offset':0}
 					];
 					jQuery.widget('ui.textSpinner', jQuery.ui.spinner, {
 						options: {
@@ -137,7 +137,7 @@
 								bt.on('click',function(e){
 									current = ranges[ui.value];
 									current.offset = ranges[ui.value].start;
-									jQuery('#memedit' ).trigger( 'refreshEvent',[ toast('Refreshing data','warning',4)]);
+									jQuery('#memedit' ).trigger( 'refreshEvent',[ toast('Обновление данных','warning',4)]);
 									bt.removeClass('ui-state-disabled').addClass('ui-state-disabled');
 									event.stopPropagation();
 								});
@@ -199,7 +199,7 @@
 								}
 								else{
 									helper.heap.free([bs]);
-									Logger.info('mapModules: Number of sprx module segments mapped '+mods.toString());
+									Logger.info('mapModules: Количество сопоставленных сегментов модуля sprx '+mods.toString());
 									jQuery('#spinner-text' ).textSpinner( 'destroy' );
 									createSpinner();
 									jQuery().toastmessage('removeToast', close_toast);
@@ -257,7 +257,7 @@
 						var val = parseInt(ival,16);
 						var sval = val.toString32().toUpperCase();
 						if(sval===ival && ival.length<=8){
-							Logger.info('memedit: Updating 4 bytes at offset 0x'+data.offset.toString(16)+' with 32 bit value: 0x'+sval);
+							Logger.info('memedit: Обновление 4 байтов по смещению 0x'+data.offset.toString(16)+' с 32-битным значением: 0x'+sval);
 							helper.memory.upoke32(data.offset,val);
 							data.value=sval;
 							var ofst = data.offset.toString32();
@@ -283,7 +283,7 @@
 							changeValue(e.data.offset,'undefined',pk);
 							ipt.removeClass('ui-state-error').addClass('ui-state-error');
 							ipt.parent().children().css({'height':'22px'});
-							ipt.attr('title','Value out of synchronisation, the browser main thread or another userland thread is preventing us from getting a reliable reading at this offset.');
+							ipt.attr('title','Значение не синхронизировано, основной поток браузера или другой поток пользовательской среды не позволяет нам получить надежное чтение по этому смещению.');
 							jQuery(document).tooltip();
 						}
 					}
@@ -313,7 +313,7 @@
 						return ret;
 					}
 					function addHexTable(offset) {	
-						if(!current){Logger.error('addHexTable: Unexpected Range error');return;}
+						if(!current){Logger.error('addHexTable: Непредвиденная ошибка диапазона');return;}
 						jQuery('.x-table input').remove();
 						jQuery('.x-table td').remove();
 						jQuery('.x-table tr:not(.row-header)').remove();
@@ -410,15 +410,15 @@
 							if(isNaN(val)===false){
 								if(isValid(val)){
 									current.offset = val;
-									jQuery('#memedit' ).trigger( 'refreshEvent',[ toast('Refreshing data','warning',4)]);
+									jQuery('#memedit' ).trigger( 'refreshEvent',[ toast('Обновление данных','warning',4)]);
 								}
 								else{
-									alert('0x'+val.toString(16).toUpperCase()+' is not located in an accessible memory range');
+									alert('0x'+val.toString(16).toUpperCase()+' не находится в доступном диапазоне памяти');
 									return;
 								}
 							}
 							else{
-								alert(document.getElementById('offset').value+' is not a valid 32 bit address');
+								alert(document.getElementById('offset').value+' не является допустимым 32-битным адресом');
 							}
 						};
 						var b2 = document.getElementById('btn2');
@@ -426,7 +426,7 @@
 						b2.title = 'Go to offset 0x'+(rec_offset-0x100).toString(16).toUpperCase();
 						b2.onclick = function(){
 							current.offset = rec_offset-0x100;
-							jQuery('#memedit' ).trigger( 'refreshEvent',[ toast('Refreshing data','warning',4)]);
+							jQuery('#memedit' ).trigger( 'refreshEvent',[ toast('Обновление данных','warning',4)]);
 						};
 						
 						var b2b = document.getElementById('btn2bis');
@@ -434,7 +434,7 @@
 						b2b.title = 'Go to offset 0x'+(rec_offset-0x1000).toString(16).toUpperCase();
 						b2b.onclick = function(){
 							current.offset = rec_offset-0x1000;
-							jQuery('#memedit' ).trigger( 'refreshEvent',[ toast('Refreshing data','warning',4)]);
+							jQuery('#memedit' ).trigger( 'refreshEvent',[ toast('Обновление данных','warning',4)]);
 						};
 						
 						var b3 = document.getElementById('btn3');
@@ -442,7 +442,7 @@
 						b3.title = 'Go to offset 0x'+(rec_offset+0x100).toString(16).toUpperCase();
 						b3.onclick = function(){
 							current.offset = rec_offset+0x100;
-							jQuery('#memedit' ).trigger( 'refreshEvent',[ toast('Refreshing data','warning',4)]);
+							jQuery('#memedit' ).trigger( 'refreshEvent',[ toast('Обновление данных','warning',4)]);
 						};
 						
 						var b3b = document.getElementById('btn3bis');
@@ -450,7 +450,7 @@
 						b3b.title = 'Go to offset 0x'+(rec_offset+0x1000).toString(16).toUpperCase();
 						b3b.onclick = function(){
 							current.offset = rec_offset+0x1000;
-							jQuery('#memedit' ).trigger( 'refreshEvent',[ toast('Refreshing data','warning',4)]);
+							jQuery('#memedit' ).trigger( 'refreshEvent',[ toast('Обновление данных','warning',4)]);
 						};
 						var idx = findRangeIndex(rec_offset);
 						if(idx>=0){
@@ -461,7 +461,7 @@
 							jQuery('.cell-data').removeClass('ui-state-disabled').addClass('ui-state-disabled');
 						}
 						current.offset=offset;
-						Logger.info('memedit: Created Memory Hex Table offset 0x'+rec_offset.toString(16).toUpperCase());
+						Logger.info('memedit: Создана Хекс таблица смещения памяти 0x'+rec_offset.toString(16).toUpperCase());
 						jQuery('#memedit' ).off( 'refreshEvent');
 						enable_GUI();
 						jQuery(b2).removeClass('gui-disabled ui-state-disabled').addClass(cn2);
@@ -488,13 +488,13 @@
 						jQuery('#memhexmode').switchButton({
 							labels_placement: 'left',
 							clear: false,
-							on_label: 'UME Strict Mode ON ',
-							off_label: 'UME Strict Mode OFF',
+							on_label: 'UME безопасный Вкл. ',
+							off_label: 'UME безопасный Откл.',
 							on_callback: function (){
 								jQuery(document).tooltip('disable');
 								helper.me_usermode = 0;
 								if(init_ume===true){
-									jQuery('#memedit' ).trigger( 'refreshEvent',[ toast('Refreshing data','warning',4)]);
+									jQuery('#memedit' ).trigger( 'refreshEvent',[ toast('Обновление данных','warning',4)]);
 								}
 								init_ume=true;
 								
@@ -504,10 +504,10 @@
 								jQuery(document).tooltip('disable');
 								function confirmMode(){
 									helper.me_usermode = 1;
-									jQuery('#memedit' ).trigger( 'refreshEvent',[ toast('Refreshing data','warning',4)]);
+									jQuery('#memedit' ).trigger( 'refreshEvent',[ toast('Обновление данных','warning',4)]);
 									jQuery(document).tooltip('enable');
 								}
-								confirmDialog('Disabling Memory Editor Strict Mode is not recommended.<br><br>This tool will crash the ps3 if you attempt to access unallocated memory areas.','Are you sure you want to continue?',confirmMode,null,function(ck){jQuery('#memhexmode').switchButton('option','checked', ck);jQuery(document).tooltip('enable');},true);//jQuery('#memhex').tooltip();
+								confirmDialog('Не рекомендуется отключать безопасный режим редактора памяти.<br><br>Этот инструмент приведет к сбою PS3, если вы попытаетесь получить доступ к нераспределенным областям памяти.','Вы уверены что хотите продолжить?',confirmMode,null,function(ck){jQuery('#memhexmode').switchButton('option','checked', ck);jQuery(document).tooltip('enable');},true);//jQuery('#memhex').tooltip();
 							}
 						});
 						createSpinner();
@@ -515,20 +515,20 @@
 						jQuery('#btn_spinner').on('click',function(e){
 							current = ranges[1];
 							current.offset = current.start;
-							jQuery('#memedit' ).trigger( 'refreshEvent',[ toast('Refreshing data','warning',4)]);
+							jQuery('#memedit' ).trigger( 'refreshEvent',[ toast('Обновление данных','warning',4)]);
 							jQuery('#btn_spinner').removeClass('ui-state-disabled').addClass('ui-state-disabled');
 						});
 						jQuery( '#spinner-text' ).textSpinner( 'value', ranges[1].name );
 						current.offset = current.start;
 						addHexTable(current.start);
-						var calc_toast = toast('Mapping sprx modules segments. Please wait...','warning',120);
+						var calc_toast = toast('Сопоставление сегментов модулей sprx. Пожалуйста подождите...','warning',120);
 						setTimeout(function(){
 							mapModules(calc_toast);
 							enable_GUI();
 						},2200);
 					}
 					catch(e){
-						Logger.error('<h2><b>JS Exception: '+e+'</b></h2><br>');
+						Logger.error('<h2><b>JS исключения: '+e+'</b></h2><br>');
 					}
 				</script>
 			

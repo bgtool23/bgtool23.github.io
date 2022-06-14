@@ -7,18 +7,18 @@
 				<div id='dLTree' class='diag-dtree ui-widget-content ui-corner-all'></div>
 				</div>
 				</div>
-				<div id='dSave_As' class='ui-helper-hidden' title='Save As'>
+				<div id='dSave_As' class='ui-helper-hidden' title='Сохранить как'>
 				<fieldset class='df ui-widget-content ui-corner-all'><label id='lsDialog_Path' for='sDialog_FileName' class='diag-dldialog-path'></label><input id='sDialog_FileName' name='sDialog_FileName' type='text' class='diag-dsdialog-ipt ui-corner-all'/></fieldset>
 				<div class='scroll-dialog-box scbsave'>
 				<div id='dSTree' class='diag-dtree ui-widget-content ui-corner-all'></div>
 				</div>
 				</div>
-				<h2 align='right' class='tab-header'>Flash Memory Manager <span class='header-tiny-text'>v1.3.1</span></h2>
+				<h2 align='right' class='tab-header'>Менеджер флэш-памяти <span class='header-tiny-text'>v1.3.1</span></h2>
 				<div id='treecontainer' class='fm-container'>
 				<table id='fmbox' class='window'>
 				<tbody class='window'>
 				<tr class='window-header ui-widget-header'>
-				<th class='logoptions window-header ui-widget-header '><div class='dir-table'><span class='dir-left header-normal-text'>CFW Compatible PS3: <span class='fmm-compat'><span id='cfwcompat'></span></span></span><span class='dir-center header-normal-text'></span><span id='spanmode' class='dir-right-fixed' title='Disabling FMM Strict Mode is very risky.Patching checks & restrictions are disabled when FMM Strict Mode is off.Use at your own risk!!!'><div class='switch-wrapper pointer' tabindex='0'><input type='checkbox' name='mode' id='admode' value='true' checked='true' ></div></span></div></th>
+				<th class='logoptions window-header ui-widget-header '><div class='dir-table'><span class='dir-left header-normal-text'>CFW-совместимая PS3: <span class='fmm-compat'><span id='cfwcompat'></span></span></span><span class='dir-center header-normal-text'></span><span id='spanmode' class='dir-right-fixed' title='Отключение безопасного режима Менеджера флэш-памяти очень рискованно. Проверки и ограничения исправлений отключаются, когда безопасный режим Менеджера флэш-памяти отключён. Используйте на свой страх и риск!!!'><div class='switch-wrapper pointer' tabindex='0'><input type='checkbox' name='mode' id='admode' value='true' checked='true' ></div></span></div></th>
 				</tr>
 				<tr class='window-content-top ui-widget-content'>
 				<td align='justify' class='window-content-top ui-widget-content'>
@@ -34,29 +34,29 @@
 				</table>
 				<br>
 				<div align='center' id='accordion' >
-				  <h3>Instructions</h3>
+				  <h3>Инструкции</h3>
 				  <div>
 					<div align='left'>
 						<ul>
-							<li>Click on the various FMM tree nodes to reveal available context menu items.</li>
-							<li>The Flash Memory Patch node's context menu is only enabled if your console is detected to be CFW compatible.</li>
+							<li>Нажмите на различные узлы дерева Менеджера флэш-памяти, чтобы открыть доступные элементы контекстного меню.</li>
+							<li>Контекстное меню Менеджера флэш-памяти доступно в том случае, если консоль определена как совместимая с CFW.</li>
 						</ul>
 					</div>
 				  </div>
-				  <h3>Tips</h3>
+				  <h3>Советы</h3>
 				  <div>
 					<div align='left'>
 						<ul>
-							<li><b>Always keep FMM Strict Mode ON.</b><span class='header-small-text'>Strict Mode OFF is ONLY for DEVELOPERS wishing to use their own custom patches.</span></li>
-							<li><b>Strict Mode OFF.</b><span class='header-small-text'>will let you patch the Flash Memory with any file regardless of its detected validity. You have been warned.</span></li>
-							<li>For performance reasons, avoid using storage directories containing more than a dozen items in total (files & folders).</li>
-							<li>For convenience sake, the SHA256 hashes displayed for each Flash Memory ROS region are calculated on the range of 0x6FFE0 bytes used by standard no-FSM patch files.</li>
+							<li><b>Всегда держите безопасный режим Менеджера флэш-памяти включённым. </b><span class='header-small-text'>Выключенный безопасный режим предназначен ТОЛЬКО для РАЗРАБОТЧИКОВ, желающих использовать свои собственные патчи.</span></li>
+							<li><b>Выключенный безопасный режим </b><span class='header-small-text'>позволит вам исправить флэш-память с любым файлом, независимо от его обнаруженной достоверности. Вы были предупреждены.</span></li>
+							<li>Из соображений производительности избегайте использования каталогов хранения, содержащих в общей сложности более дюжины элементов (файлов и папок).</li>
+							<li>Для удобства хэши SHA256, отображаемые для каждой области ROS флэш-памяти, рассчитываются на основе диапазона байтов 0x6FFE0, используемого стандартными файлами исправлений no-FSM.</li>
 						</ul>
 					</div>
 				  </div>
 				</div>
 				</div>
-				<div id='dfmProgress' class='diag-fmProgress ui-helper-hidden' title='Operations Progress'></div>
+				<div id='dfmProgress' class='diag-fmProgress ui-helper-hidden' title='Прогресс операций'></div>
 				<div id='ulog' class='ui-helper-hidden'></div>
 				</div>
 				<script>
@@ -90,16 +90,16 @@
 					sha256_ros = getSHA256hash(buf_po.offset+0x30, helper.patchfile_size);
 					if(dl_object && buf_po===dl_object.buffer){dl_object.sha256 = sha256_ros;}
 					updateBuffer(buf_po,sha256_ros);
-					ulog('SHA256 Extraction Complete');
-					Logger.info('Patch File '+filename+' SHA256 checksum: '+sha256_ros);
-					ulog('Patch validation operations complete');
+					ulog('Извлечение SHA256 завершено');
+					Logger.info('Файл патча '+filename+' SHA256 контрольная сумма: '+sha256_ros);
+					ulog('Операции проверки патча завершены');
 					if(sha256_ros!==helper.nofsm_hash){
-						if(dl_object && buf_po===dl_object.buffer){toast('Patch Download Error','warning',5);}
-						Logger.warn('Custom patch file detected.');
+						if(dl_object && buf_po===dl_object.buffer){toast('Ошибка загрузки патча','warning',5);}
+						Logger.warn('Обнаружен кастомный файл патча.');
 						return 1;
 					}
 					else{
-						Logger.info('official patch file detected.');
+						Logger.info('Обнаружен официальный файл патча.');
 						return 0;
 					}
 				}
@@ -113,13 +113,13 @@
 					}
 					setTimeout(function(){
 						helper.sp.playOK();
-						pbfm1.updateProgressDialog({'dlabel':'Idle','glabel':'Patch File \''+filename+'\' loaded & validated','dvalue':100,'gvalue':100,'istatus':'success-image'},start);
+						pbfm1.updateProgressDialog({'dlabel':'Ожидание','glabel':'Файл патча \''+filename+'\' загружен и проверен','dvalue':100,'gvalue':100,'istatus':'success-image'},start);
 					},250);
 				}
 				function updateNoValidationGUI(buf_po,start,filename){
 					helper.sp.playNG();
-					pbfm1.updateProgressDialog({'glabel':'Loading Operations failed','dlabel':'File validation error','dvalue':100,'gvalue':100,'istatus':'error-image'},start);
-					Logger.info('Invalid Patch File '+filename);
+					pbfm1.updateProgressDialog({'glabel':'Загрузка операций не удалась','dlabel':'Ошибка проверки файла','dvalue':100,'gvalue':100,'istatus':'error-image'},start);
+					Logger.info('Неверный файл патча '+filename);
 				}
 				function ulog(ht,clean){
 					var u = document.getElementById('ulog');
@@ -138,8 +138,8 @@
 					labels_placement: 'left',
 					//checked: true,
 					clear: false,
-					on_label: 'FMM Strict Mode ON ',
-					off_label: 'FMM Strict Mode OFF',
+					on_label: 'Защита Вкл. ',
+					off_label: 'Защита Откл.',
 					on_callback: function (){
 						jQuery(document).tooltip('disable');
 						helper.fm_usermode = 0;
@@ -151,7 +151,7 @@
 							helper.fm_usermode = 1;
 							jQuery(document).tooltip('enable');
 						}
-						confirmDialog('YOU SHOULD NEVER TURN FMM Strict Mode OFF!!!<br><br>Only advanced users & developers should ever consider using FMM with strict mode off.You have been warned.','Are you sure you want to continue?',confirmMode,null,function(ck){jQuery('#admode').switchButton('option','checked', ck);jQuery(document).tooltip('enable');},true);
+						confirmDialog('ВЫ НИКОГДА НЕ ДОЛЖНЫ ВЫКЛЮЧАТЬ безопасный режим Менеджера флэш-памяти!!!<br><br>Только опытные пользователи и разработчики должны когда-либо использовать Менеджер флэш-памяти с отключённым безопасным режимом. Вы были предупреждены.','Вы уверены что хотите продолжить?',confirmMode,null,function(ck){jQuery('#admode').switchButton('option','checked', ck);jQuery(document).tooltip('enable');},true);
 					}
 				});
 				
@@ -173,7 +173,7 @@
 						'default_name': 'dump.hex',
 						'buffer': null
 					};
-					var dialogButtons = [{text: 'Save', icon: 'ui-icon-disk', click: function(event, ui){
+					var dialogButtons = [{text: 'Сохранить', icon: 'ui-icon-disk', click: function(event, ui){
 						if(sobj.sector_count){
 							sobj.file_path = jQlbl_fname[0].innerText;
 							function confirmDump(){
@@ -183,9 +183,9 @@
 								setTimeout(function() {
 									sobj.buffer = helper.sm.getBuffer();
 									sobj.tls = helper.worker['fmm'].getTLS();
-									if(!sobj.buffer){Logger.error('saveDump: Buffer memory allocation failed!');toast('Buffer memory allocation failed','error',5);return;}
-									if(!sobj.tls){Logger.error('saveDump: TLS memory allocation failed!');toast('TLS memory allocation failed','error',5);return;}
-									pbfm1.setTitle('Dumping Operations Progress');
+									if(!sobj.buffer){Logger.error('saveDump: Не удалось выделить буферную память!');toast('Не удалось выделить буферную память','error',5);return;}
+									if(!sobj.tls){Logger.error('saveDump: Не удалось выделить память TLS!');toast('Не удалось выделить память TLS','error',5);return;}
+									pbfm1.setTitle('Выполнение операций дампинга');
 									pbfm1.open();
 									setTimeout(function() {
 										sdef.resolve(sobj);
@@ -193,7 +193,7 @@
 								},1000);
 							}
 							if(fsitem_exists(sobj.file_path)){
-								confirmDialog('If you continue, '+sobj.file_path+' will be overwritten','Confirm',confirmDump);
+								confirmDialog('Если вы продолжите, '+sobj.file_path+' будет перезаписан','Confirm',confirmDump);
 							}
 							else{
 								confirmDump();
@@ -209,13 +209,13 @@
 							},250);
 							}
 							if(fsitem_exists(sobj.file_path)){
-								confirmDialog('If you continue, '+sobj.file_path+' will be overwritten','Confirm',confirmSave);
+								confirmDialog('Если вы продолжите, '+sobj.file_path+' будет перезаписан','Confirm',confirmSave);
 							}
 							else{
 								confirmSave();
 							}
 						}
-					}},{text: 'Cancel', icon: 'ui-icon-close', click: function(event, ui){
+					}},{text: 'Отмена', icon: 'ui-icon-close', click: function(event, ui){
 						jQdialog.dialog('close');
 					}}];//
 					jQuery('#dSave_As').removeClass('ui-helper-hidden');
@@ -308,7 +308,7 @@
 									sd.enableSaveButton();
 								}
 								else{
-									jQlbl_fname.text('Please select a destination folder');
+									jQlbl_fname.text('Пожалуйста, выберите папку назначения');
 									sd.disableSaveText();
 									sd.disableSaveButton();
 								}
@@ -362,7 +362,7 @@
 						});
 						this.disableSaveButton();
 						this.disableSaveText();
-						jQlbl_fname.text('Please select a destination folder');
+						jQlbl_fname.text('Пожалуйста, выберите папку назначения');
 						sdef = jQuery.Deferred();
 						sdef.promise().done(func);
 						jQtree.focus();
@@ -405,48 +405,48 @@
 							var start = new Date();
 							ulog(start,true);
 							pbfm1.open();
-							pbfm1.updateProgressDialog({'dlabel':'Preparing buffer','glabel':'Loading \''+filename+'\'','dvalue':0,'gvalue':0,'title':'Loading Operations Progress'});
+							pbfm1.updateProgressDialog({'dlabel':'Подготовка буфера','glabel':'Загрузка \''+filename+'\'','dvalue':0,'gvalue':0,'title':'Прогресс операций загрузки'});
 							setTimeout(function(){
 								var jQftree = jQuery('#fTree').jstree(true);
 								ldiag.removePatch();
 								sha256_ros = '';
 								buf_po = helper.sm.getBuffer();
-								if(!buf_po){Logger.error('loadPatch: Buffer memory allocation failed!');toast('Buffer memory allocation failed','error',5);return;}
+								if(!buf_po){Logger.error('loadPatch: Не удалось выделить буферную память!');toast('Не удалось выделить буферную память','error',5);return;}
 								lrosFile = new fileObject(jQpath.text());
 								ulog('Opened File '+jQpath.text());
 								ulog('Size: 0x'+lrosFile.size.toString(16));
 								if(lrosFile.size===helper.patchfile_size){
-									ulog('File Size Check: OK');
-									pbfm1.updateProgressDialog({'dlabel':'Reading file data','gvalue':0},start);
+									ulog('Проверка размера файла: OK');
+									pbfm1.updateProgressDialog({'dlabel':'Чтение данных файла','gvalue':0},start);
 									setTimeout(function(){
-										Logger.info('loadPatch: loading file '+jQpath.text());
+										Logger.info('loadPatch: загрузка файла '+jQpath.text());
 										var err = lrosFile.load(helper.patchfile_size,{'offset':buf_po.offset+0x30,'size':helper.patchfile_size});
 										if(err===0){
-											ulog('File loaded successfully');
-											pbfm1.updateProgressDialog({'dlabel':'SHA256 Extraction','glabel':'Validating \''+filename+'\'','dvalue':100,'gvalue':75},start);
+											ulog('Файл успешно загружен');
+											pbfm1.updateProgressDialog({'dlabel':'Извлечение SHA256','glabel':'Проверка \''+filename+'\'','dvalue':100,'gvalue':75},start);
 											//setTimeout(function(){
 											if(validatePatchFile(buf_po,filename)===1){
-												var tsttxt = 'The loaded file is a custom patch file. Applying it on this console without a hardware flasher for emergencies is risky & unwise.';
+												var tsttxt = 'Загруженный файл представляет собой кастомный файл патча. Применение его на этой консоли без аппаратного флешера в экстренных случаях рискованно и неразумно.';
 												if(!helper.fm_usermode){
-													toast(tsttxt+' You cannot use it in Strict Mode.','warning',10);
-													ulog(tsttxt+'<br>You cannot use it in Strict Mode.');
+													toast(tsttxt+' Вы не можете использовать его в безопасном режиме.','warning',10);
+													ulog(tsttxt+'<br>Вы не можете использовать его в безопасном режиме.');
 													updateNoValidationGUI(buf_po,start,filename);
 													closure();
 													return;
 												}
 												else{
 													toast(tsttxt,'warning',5);
-													ulog('Patch file type: Custom<br>Using this file to patch the console is risky<br>You should consider your next steps carefully.');
+													ulog('Тип файла патча: Кастомный<br>Использование этого файла для патча консоли сопряжено с риском.<br>Вам следует тщательно обдумать свои дальнейшие действия.');
 												}
 											}
 											else{
 												if(helper.kmode==='CEX'){
-													toast('The loaded file is the recommended patch file for use on this console with the current firmware version','success',5);
-													ulog('Patch file type: Official CEX');
+													toast('Загруженный файл является рекомендуемым файлом патча для использования на этой консоли с текущей версией прошивки.','success',5);
+													ulog('Тип файла патча: Официальный CEX');
 												}
 												else{
-													toast('The loaded file is the recommended patch file for CEX mode only. This console is in ('+helper.kmode+') mode, using this patch will brick it.','warning',10);
-													ulog('Patch file type: Official CEX - NOT compatible with the current mode ('+helper.kmode+') of this console');
+													toast('Загруженный файл является рекомендуемым файлом патча только для режима CEX. Эта консоль находится в ('+helper.kmode+') режиме, использование этого патча брикнет её.','warning',10);
+													ulog('Тип файла патча: Официальный CEX - НЕ совместим с текущим режимом ('+helper.kmode+') этой консоли');
 												}
 											}
 											updateValidationGUI(start,filename);
@@ -454,7 +454,7 @@
 											//},500);
 										}
 										else {
-											ulog('File IO error: 0x'+err.toString(16)+'<br>Loading operations aborted');
+											ulog('Ошибка ввода-вывода файла: 0x'+err.toString(16)+'<br>Операции загрузки прерваны');
 											updateNoValidationGUI(buf_po,start,filename);
 											closure();
 										}
@@ -462,9 +462,9 @@
 								}
 								else {
 									helper.sp.playNG();
-									pbfm1.updateProgressDialog({'dlabel':'Loading Operations failed','glabel':jQpath.text()+' is not a valid patch file','dvalue':100,'gvalue':100,'istatus':'error-image'},start);
-									ulog('File Size Check: NG<br>Loading operations aborted');
-									Logger.info('loadPatch: Invalid File '+jQpath.text());
+									pbfm1.updateProgressDialog({'dlabel':'Загрузка операций не удалась','glabel':jQpath.text()+' не является допустимым файлом патча','dvalue':100,'gvalue':100,'istatus':'error-image'},start);
+									ulog('Проверка размера файла: NG<br>Операции загрузки прерваны');
+									Logger.info('loadPatch: Файл поврежден '+jQpath.text());
 									closure();
 								}
 								function closure(){
@@ -473,7 +473,7 @@
 								}
 							},1200);
 						}},
-						{text: 'Cancel', icon: 'ui-icon-close', click: function(event, ui){
+						{text: 'Отмена', icon: 'ui-icon-close', click: function(event, ui){
 							jQdialog.dialog('close');
 						}}];//
 					jQuery('#dLoad').removeClass('ui-helper-hidden');
@@ -621,9 +621,9 @@
 					var cfwminver = parseFloat(helper.minver)<3.60;
 					var metldr = getMtldrVersion(so);
 					function metldr_err(){
-						Logger.error('The minimum applicable firmware version does not match the metldr version');
-						Logger.warn('If the IDPS of your console is spoofed, the minimum applicable firmware version calculated by the system is no longer reliable');
-						toast('A discrepancy possibly caused by IDPS spoofing was detected in the minimum applicable firmware version returned by the system.','warning',5);
+						Logger.error('Минимальная применимая версия прошивки не соответствует версии metldr.');
+						Logger.warn('Если IDPS вашей консоли подделан, минимальная применимая версия прошивки, рассчитанная системой, больше не является надежной.');
+						toast('Несоответствие, возможно вызванное спуфингом IDPS, было обнаружено в минимальной применимой версии микропрограммы, возвращенной системой.','warning',5);
 						helper.minver += ' !';
 					}
 					if(metldr === 'metldr.2' && cfwminver){
@@ -649,16 +649,16 @@
 							'dblclick_toggle':false,
 							'data' : function (node, cb) {
 								if(node.id === '#') {
-									var nodes = [{ 'id' : 'flash', 'type' : 'flash', 'parent' : '#', 'text' : 'Flash Memory' },
-									   { 'id' : 'type', 'type' : 'ros', 'parent' : 'flash', 'text' : 'Type: ?' },
-									   { 'id' : 'sectors', 'type' : 'ros', 'parent' : 'flash', 'text' : 'Number of Sectors: ?' },
+									var nodes = [{ 'id' : 'flash', 'type' : 'flash', 'parent' : '#', 'text' : 'Дамп Флэш-памяти' },
+									   { 'id' : 'type', 'type' : 'ros', 'parent' : 'flash', 'text' : 'Тип: ?' },
+									   { 'id' : 'sectors', 'type' : 'ros', 'parent' : 'flash', 'text' : 'Количество секторов: ?' },
 									   { 'id' : 'idps', 'type' : 'ros', 'parent' : 'flash', 'text' : 'IDPS: ?' },
-									   { 'id' : 'minver', 'type' : 'ros', 'parent' : 'flash', 'text' : 'Minimum Applicable FW Version: ?' },
-									   { 'id' : 'ros0', 'type' : 'ros', 'parent' : 'flash', 'text' : 'ROS bank 0' },
-									   { 'id' : 'ros1', 'type' : 'ros', 'parent' : 'flash', 'text' : 'ROS bank 1' },
-									   { 'id' : 'info0', 'type' : 'info', 'parent' : 'ros0', 'text' : 'Calculating SHA256 checksum, please wait...' },
-									   { 'id' : 'info1', 'type' : 'info', 'parent' : 'ros1', 'text' : 'Calculating SHA256 checksum, please wait...' },
-									   { 'id' : 'flashbk', 'type' : 'flash', 'parent' : '#', 'text' : 'Flash Memory Patch' }
+									   { 'id' : 'minver', 'type' : 'ros', 'parent' : 'flash', 'text' : 'Минимальная версия прошивки: ?' },
+									   { 'id' : 'ros0', 'type' : 'ros', 'parent' : 'flash', 'text' : 'ROS банк 0' },
+									   { 'id' : 'ros1', 'type' : 'ros', 'parent' : 'flash', 'text' : 'ROS банк 1' },
+									   { 'id' : 'info0', 'type' : 'info', 'parent' : 'ros0', 'text' : 'Вычисление контрольной суммы SHA256, пожалуйста, подождите...' },
+									   { 'id' : 'info1', 'type' : 'info', 'parent' : 'ros1', 'text' : 'Вычисление контрольной суммы SHA256, пожалуйста, подождите...' },
+									   { 'id' : 'flashbk', 'type' : 'flash', 'parent' : '#', 'text' : 'Патч флэш-памяти' }
 									];
 									cb(nodes);
 								 }
@@ -735,7 +735,7 @@
 										'Save': {
 											'separator_before': false,
 											'separator_after': false,
-											'label': 'Save Flash Memory Backup',
+											'label': 'Сохранить бэкап флэш-памяти',
 											'icon' : 'fa fa-floppy-o fa-fw',
 											'action': function (obj) {
 												setTimeout(function(){
@@ -756,7 +756,7 @@
 										'Load': {
 											'separator_before': false,
 											'separator_after': false,
-											'label': 'Load Patch from file',
+											'label': 'Загрузить патч из файла',
 											'icon' : 'fa fa-folder-open-o fa-fw',
 											'action': function (obj) {
 												setTimeout(function(){
@@ -767,7 +767,7 @@
 										'LoadWeb':{
 											'separator_before': false,
 											'separator_after': false,
-											'label':  'Load Patch via HTTPS',
+											'label':  'Загрузить патч через HTTPS',
 											'_disabled': is_cex ? helper.nofsm_url.length>0 ? false: true : true, //add more checks????
 											'icon' : 'fa fa-cloud-download fa-fw',
 											'action': function (obj) {
@@ -777,10 +777,10 @@
 													setTimeout(function() {
 														dl_object  = {buffer: helper.sm.getBuffer(),file: helper.nofsm_url,start:new Date(),sha256:''};
 														ulog(dl_object.start,true);
-														if(!dl_object.buffer){Logger.error('loadPatch: Buffer memory allocation failed!');toast('Buffer memory allocation failed','error',5);return;}
+														if(!dl_object.buffer){Logger.error('loadPatch: Не удалось выделить буферную память!');toast('Buffer memory allocation failed','error',5);return;}
 														pbfm1.open(false,dl_cancel);
-														pbfm1.updateStatusText('Initializing download operations');
-														pbfm1.updateProgressDialog({'glabel':'Establishing server connection','title':'Download Operations Progress'});
+														pbfm1.updateStatusText('Инициализация операций загрузки');
+														pbfm1.updateProgressDialog({'glabel':'Установка соединения с сервером','title':'Процесс операций загрузки'});
 														setTimeout(function() {
 															helper.swf.downloadFile(dl_object.file);//
 														},500);
@@ -791,7 +791,7 @@
 										'Download':{
 											'separator_before': false,
 											'separator_after': false,
-											'label':  'Download Patch file',
+											'label':  'Скачать файл патча',
 											'_disabled': is_cex ? helper.nofsm_url.length>0 ? false: true : true, //add more checks????
 											'icon' : 'fa fa-download fa-fw',
 											'action': function (obj) {
@@ -801,7 +801,7 @@
 										'Patch': {
 											'separator_before': true,
 											'separator_after': false,
-											'label': 'Apply loaded Patch',
+											'label': 'Применить загруженный патч',
 											'icon' : 'fa fa-cogs fa-fw',
 											'_disabled': is_regmode ? is_patch_rec && is_cex && is_patch_avail ? false : true : is_patch_avail ? false : true , //add more checks????
 											'action': function (obj) {
@@ -816,16 +816,16 @@
 															'data_buffer': window.ldiag.getBuffer(),
 															'offset_data':{'ros0':_nor ? 0x20 : 0, 'ros1': _nor ? 0x20 : 0x10}
 														};
-														pbfm1.setTitle('Patching Operations Progress');
+														pbfm1.setTitle('Процесс операций патчинга');
 														pbfm1.open(true);
 														def.resolve(patch_object);
 													},0);
 												}
 												if(!is_patch_rec){ //check against offcial no-fsm patch sha256 ??
-													confirmDialog('Patching the ps3 Flash Memory with this patch file is allowed because you disabled Strict Mode. Proceeding to patching using this data could be seriously risky, you have been warned. There is no way to pause or cancel the patching process beyond this confirmation dialog. Are you sure you want to continue?','Patch Confirmation',confirmPatch);
+													confirmDialog('Патчинг флэш-памяти PS3 с помощью этого файла патча разрешено, поскольку вы отключили безопасный режим. Вас предупредили, что установка патча с использованием этих данных может быть очень рискованной. Невозможно приостановить или отменить процесс пропатчивания, кроме этого диалогового окна подтверждения. Вы уверены что хотите продолжить?','Подтверждение пропатчивания',confirmPatch);
 												}
 												else{
-													confirmDialog('Patching the ps3 Flash Memory can brick your console, it should never be done casually. There is no way to pause or cancel the patching process beyond this confirmation dialog. Are you sure you want to continue?','Patch Confirmation',confirmPatch);
+													confirmDialog('Патчинг флэш-памяти PS3 может привести к поломке вашей консоли, это никогда не следует делать случайно. Невозможно приостановить или отменить процесс пропатчивания, кроме этого диалогового окна подтверждения. Вы уверены что хотите продолжить?','Подтверждение пропатчивания',confirmPatch);
 												}
 											}
 										}
@@ -833,7 +833,7 @@
 										'Save_ROS': {
 											'separator_before': false,
 											'separator_after': false,
-											'label': node.id === 'ros0' ? 'Save ROS0 data as noFSM Patch File':'Save ROS1 data as noFSM Patch File',
+											'label': node.id === 'ros0' ? 'Сохранить данные ROS0 как файл патча noFSM.':'Сохранить данные ROS1 как файл патча noFSM.',
 											'icon' : 'fa fa-floppy-o fa-fw',
 											'_disabled': is_regmode ? true:false,
 											'action': function (obj) {
@@ -862,7 +862,7 @@
 										'Toggle': {
 											'separator_before': false,
 											'separator_after': false,
-											'label': idps_hidden ? 'Show IDPS': 'Hide IDPS',
+											'label': idps_hidden ? 'Показать IDPS': 'Скрыть IDPS',
 											'icon' : idps_hidden ? 'fa fa-unlock-alt fa-fw': 'fa fa-lock fa-fw',
 											'action': function (obj) {
 												idps_hidden ? jstree.rename_node('idps', 'IDPS: '+idps.toUpperCase()) : jstree.rename_node('idps', 'IDPS: '+XXX);
@@ -882,7 +882,7 @@
 										'Save':{
 											'separator_before': false,
 											'separator_after': false,
-											'label':  'Save IDPS as file',
+											'label':  'Сохранить IDPS как файл',
 											'icon' : 'fa fa-floppy-o fa-fw',
 											'action': function (obj) {
 												setTimeout(function(){
@@ -920,8 +920,8 @@
 					});
 					//alert('fmm ros hashing');
 					jstree = jQtree.jstree(true);
-					jstree.rename_node('type', _nor ? 'Flash Memory Type: NOR 16Mb' : cfw_compat ? 'Flash Memory Type: NAND 256Mb':'Flash Memory Type: eMMC 256Mb');
-					jstree.rename_node('sectors', _nor ? 'Number of Sectors: 0x8000' : 'Number of Sectors: 0x80000 (0x77800 in dump)');
+					jstree.rename_node('type', _nor ? 'Тип флэш-памяти: NOR 16Mb' : cfw_compat ? 'Тип флэш-памяти: NAND 256Mb':'Тип флэш-памяти: eMMC 256Mb');
+					jstree.rename_node('sectors', _nor ? 'Количество секторов: 0x8000' : 'Количество секторов: 0x80000 (0x77800 в дампе)');
 					jstree.rename_node('idps', 'IDPS: '+idps.toUpperCase());
 					if(!cfw_compat){jstree.disable_node('flashbk');}
 					var ros0_ref = '';
@@ -933,13 +933,13 @@
 					this.refreshFM_node = function(cb){
 						//alert('fmm refreshFM_node');
 						sha256_pending = true;
-						jstree.rename_node('info0','Calculating SHA256 checksum, please wait...');
-						jstree.rename_node('info1','Calculating SHA256 checksum, please wait...');
+						jstree.rename_node('info0','Вычисление контрольной суммы SHA256, пожалуйста, подождите...');
+						jstree.rename_node('info1','Вычисление контрольной суммы SHA256, пожалуйста, подождите...');
 						var sbuf = helper.sm.getBuffer();
 						if(!sbuf){
 							helper.sp.playNG();
-							Logger.error('SHA256 Extraction failed. No buffer available.');
-							toast('If the toolset keeps getting errors when allocating buffer memory, you should restart the console.','error',5);
+							Logger.error('Ошибка извлечения SHA256. Нет доступного буфера.');
+							toast('Если набор инструментов продолжает получать ошибки при выделении буферной памяти, вам следует перезапустить консоль.','error',5);
 							jQuery().toastmessage('removeToast', close_toast);
 							jQuery('.preloader').removeClass('ui-helper-hidden').addClass('ui-helper-hidden');
 							return;
@@ -947,15 +947,15 @@
 						//alert('sbuf: 0x'+sbuf.offset.toString(16)+' - size 0x'+sbuf.size.toString(16));
 						var tl = helper.worker['fmm'].getTLS();
 						if(!tl){
-							Logger.error('SHA256 Extraction: TLS memory allocation failed!');
-							toast('TLS memory allocation failed','error',5);
+							Logger.error('Извлечение SHA256: не удалось выделить память TLS!');
+							toast('Не удалось выделить память TLS','error',5);
 							return;
 						}
 						//alert('fmm ROSHashObject');
 						var rosH = new ROSHashObject(so,{'dump_start':so.is_nor() ? 0x600: 0x400,'data_buffer':sbuf,'tls':tl});
 						if(rosH.error.code>0){
-							Logger.error('SHA256 Extraction: ROSHashObject creation failed!');
-							toast('SHA256 Extraction failed','error',5);
+							Logger.error('Извлечение SHA256: создание ROSHashObject не удалось!');
+							toast('Ошибка извлечения SHA256','error',5);
 							return;
 						}
 						//TO-DO:
@@ -971,9 +971,9 @@
 						}
 						function sha256_error(str){
 							//alert(str);
-							jstree.rename_node('info0','SHA256: Extraction Error');
-							jstree.rename_node('info1','SHA256: Extraction Error');
-							jstree.rename_node('minver','Minimum Applicable Firmware Version: '+helper.minver);
+							jstree.rename_node('info0','SHA256: ошибка извлечения');
+							jstree.rename_node('info1','SHA256: ошибка извлечения');
+							jstree.rename_node('minver','Минимальная версия прошивки: '+helper.minver);
 							jstree.open_all('flash');
 							sha256_pending = false;
 							sha256_cleanup();
@@ -981,7 +981,7 @@
 						ros0_ref = ros0_new;
 						ros1_ref = ros1_new;
 						//alert('fmm workers call 1');
-						helper.worker['fmm'].run(rosH.sfx[0],'ROS Data Extraction',function(){Logger.info('Extracting data from Flash Memory ROS regions');},function(){
+						helper.worker['fmm'].run(rosH.sfx[0],'Извлечение данных ROS',function(){Logger.info('Извлечение данных из областей ROS флэш-памяти');},function(){
 								//alert('fmm ros data extraction');
 								function checkArr(arr,val){
 									var good=true;
@@ -1000,15 +1000,15 @@
 								}
 								else{
 									//Logger.trace(rosH.log[0]);
-									jstree.rename_node('minver','Minimum Applicable Firmware Version: '+helper.minver);
+									jstree.rename_node('minver','Минимальная версия прошивки: '+helper.minver);
 								}
 						});
 						//alert('fmm workers call 2');
-						helper.worker['fmm'].run(rosH.sfx[1],'ROS1 Data hashing',function(){Logger.info('ROS1 Data hashing');},function(){
+						helper.worker['fmm'].run(rosH.sfx[1],'Хеширование данных ROS1',function(){Logger.info('Хеширование данных ROS1');},function(){
 								//alert('fmm ros1 hashing');
 								ros1_new = helper.memory.upeeks(rosH.hash_r1, 0x20, false).toUpperCase();
 								if(ros1_new ==='FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF'){
-									sha256_error('ROS 1 hashing error');
+									sha256_error('Ошибка хеширования ROS 1');
 									return;
 								}
 								//Logger.trace(rosH.log[1]);
@@ -1016,11 +1016,11 @@
 								jstree.rename_node('info1','SHA256: '+ ros1_new);
 						});
 						//alert('fmm workers call 3');
-						helper.worker['fmm'].run(rosH.sfx[2],'ROS0 Data hashing',function(){Logger.info('ROS0 Data hashing');},function(){
+						helper.worker['fmm'].run(rosH.sfx[2],'Хеширование данных ROS0',function(){Logger.info('Хеширование данных ROS0');},function(){
 								//alert('fmm ros0 hashing');
 								ros0_new = helper.memory.upeeks(rosH.hash_r0, 0x20, false).toUpperCase();
 								if(ros0_new==='FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF'){
-									sha256_error('ROS 0 hashing error');
+									sha256_error('Ошибка хеширования ROS 0');
 									return;
 								}
 								//Logger.trace(rosH.log[2]);
@@ -1031,7 +1031,7 @@
 								helper.sp.playOK();
 								if(cb){cb(this.changedROS());}
 								sha256_cleanup();
-								Logger.info('ROS SHA256 checksums <br>ROS0 = '+ros0_new+'<br>ROS1 = '+ros1_new);
+								Logger.info('Контрольные суммы ROS SHA256 <br>ROS0 = '+ros0_new+'<br>ROS1 = '+ros1_new);
 								//setTimeout(helper.sp.playOK,750);
 						});
 					};
@@ -1040,9 +1040,9 @@
 					};
 					this.checkFMSHA256 = function(){
 						var fp_hashref = ldiag.getSHA256();
-						Logger.info('checkFMSHA256: Patch File Hash: 0x'+fp_hashref);
-						Logger.info('checkFMSHA256: ROS0 Hash: 0x'+ros0_new);
-						Logger.info('checkFMSHA256: ROS1 Hash: 0x'+ros1_new);
+						Logger.info('checkFMSHA256: Хэш файла патча: 0x'+fp_hashref);
+						Logger.info('checkFMSHA256: ROS0 хэш: 0x'+ros0_new);
+						Logger.info('checkFMSHA256: ROS1 хэш: 0x'+ros1_new);
 						return {'ros0':ros0_new === fp_hashref, 'ros1':ros1_new === fp_hashref};
 					};
 					this.changedROS = function(){
@@ -1113,11 +1113,11 @@
 							jQuery(el).attr('class','icon-status '+_class);
 						});
 					};
-					var dialogButtons = [{text: 'Cancel', icon: 'ui-icon-close', click: function(event, ui){
+					var dialogButtons = [{text: 'Отмена', icon: 'ui-icon-close', click: function(event, ui){
 						function confirmCancel(){
 							cancel_ops=true;
 						}
-						confirmDialog('Do you really wish to stop the operations in progress?','Cancel',confirmCancel);
+						confirmDialog('Вы действительно хотите остановить выполняемые операции?','Cancel',confirmCancel);
 					}}];//
 					var jQdialog = container.dialog({
 						autoOpen: false,
@@ -1133,13 +1133,13 @@
 							//TO DO:
 							// disable both trees & other tabs
 							setIcon('hourglass');
-							progressgLabel.text( 'Generating worker thread data' );
-							progressdLabel.text( 'Idle' );
+							progressgLabel.text( 'Генерация данных рабочего потока' );
+							progressdLabel.text( 'Ожидание' );
 							pbg_val.text( '' );
 							pbd_val.text( '' );
 							progressbarg.progressbar('value', false);
 							progressbard.progressbar('value', false);
-							progressStatus.text( 'Initializing Operations' );
+							progressStatus.text( 'Инициализация операций' );
 							cancel_ops = false;
 						 }
 					});
@@ -1151,16 +1151,16 @@
 							pbg_val.text(txt);
 						},
 						complete: function(event, ui) {
-							pbg_val.text( 'Done' );
-							pbd_val.text( 'Done' );
+							pbg_val.text( 'Готово' );
+							pbd_val.text( 'Готово' );
 							jQdialog.dialog( 'option', 'buttons', [
-								{text: 'Log',  icon: 'ui-icon-info', click: function(event, ui){
+								{text: 'Лог',  icon: 'ui-icon-info', click: function(event, ui){
 									function showuLog(){
 										jQuery('#dfmProgress').parent().find('button:last').focus().blur();
 									}
-									infoDialog(jQuery('#ulog').html(),'Log',showuLog);
+									infoDialog(jQuery('#ulog').html(),'Лог',showuLog);
 								}},
-								{text: 'Close', icon: 'ui-icon-check', click: function(event, ui){
+								{text: 'Закрыть', icon: 'ui-icon-check', click: function(event, ui){
 									jQdialog.dialog( 'option',{ close: function(event,ui){}});
 									jQdialog.dialog('close');
 								}}]
@@ -1199,7 +1199,7 @@
 						return progressStatus.text();
 					};
 					this.setTitle = function(txt){
-						jQdialog.dialog( 'option', 'title', 'Flash Memory Manager: '+txt );
+						jQdialog.dialog( 'option', 'title', 'Менеджер флэш-памяти: '+txt );
 					};
 					this.updateStatusStyle = function(obj){
 						progressStatus.css( obj );
@@ -1216,7 +1216,7 @@
 					};
 					this.open = function(noCancel,cb){
 						if(noCancel===true){
-							jQdialog.dialog( 'option', 'buttons', [{text: 'Cancel', icon: 'ui-icon-close', click: function(event, ui){toast('Current operations cannot be cancelled','warning',3);return;}}]);
+							jQdialog.dialog( 'option', 'buttons', [{text: 'Отмена', icon: 'ui-icon-close', click: function(event, ui){toast('Текущие операции не могут быть отменены','warning',3);return;}}]);
 							jQdialog.dialog( 'option', 'classes.ui-dialog', 'no-close' );
 							jQdialog.dialog( 'option',{ close: function(event,ui){}});
 						}
@@ -1226,11 +1226,11 @@
 									cb();
 								}});
 								jQdialog.dialog( 'option', 'buttons', 
-									[{text: 'Cancel', icon: 'ui-icon-close', click: function(event, ui){
+									[{text: 'Отмена', icon: 'ui-icon-close', click: function(event, ui){
 										function confirmCancel(){
 											jQdialog.dialog( 'close');
 										}
-										confirmDialog('Do you really wish to stop the operations in progress?','Cancel',confirmCancel);
+										confirmDialog('Вы действительно хотите остановить выполняемые операции?','Cancel',confirmCancel);
 									}}]
 								);
 							}
@@ -1256,13 +1256,13 @@
 					};
 				};
 				var cleanup = function(obj){
-					ulog('Flash Memory Dump Operations Cleanup');
+					ulog('Очистка операций дампа флэш-памяти');
 					var serr=so.close();
-					if(serr!==0){ulog('Flash Memory Storage Object Close Error: 0x'+serr.toString(16));}
+					if(serr!==0){ulog('Ошибка закрытия объекта хранилища флэш-памяти: 0x'+serr.toString(16));}
 					var ferr= obj.f.close();
 					delete obj.f;
 					obj.f=null;
-					if(ferr!==0){ulog('File Object Close error: 0x'+ferr.toString(16));}
+					if(ferr!==0){ulog('Ошибка закрытия файлового объекта: 0x'+ferr.toString(16));}
 					obj.d.log=null;
 					obj.d.rret=null;
 					obj.d.wret=null;
@@ -1278,18 +1278,18 @@
 					helper.sp.playOK();
 					cleanup(obj);
 					setTimeout(function(){
-						toast('Dump process completed successfully','success',5);
-						pbfm1.updateProgressDialog({'gvalue':100,'glabel':'Created Dump File \''+obj.filename+'\'','istatus':'success-image'});
-						toast('The validity of a dump should always be confirmed by a proper validator tool such as pyPS3checker','notice',5);
+						toast('Процесс дампа завершен успешно','success',5);
+						pbfm1.updateProgressDialog({'gvalue':100,'glabel':'Созданный файл дампа \''+obj.filename+'\'','istatus':'success-image'});
+						toast('Действительность дампа всегда должна быть подтверждена соответствующим инструментом проверки, таким как pyPS3checker.','notice',5);
 						//setTimeout(helper.sp.playOK,250);
 					},100);
 				};
 				var failed = function(obj){
 					helper.sp.playNG();
-					ulog('Flash Memory Dump Process Error<br>'+obj.error.toString(16));
+					ulog('Ошибка процесса создания дампа флэш-памяти<br>'+obj.error.toString(16));
 					pbfm1.updateStatusText(obj.status);
-					pbfm1.updateProgressDialog({'dlabel':obj.error,'glabel':'Dump Operations Failure','dvalue':100,'gvalue':100,'istatus':'error-image'});
-					toast('An error occurred during the Dump process. Check the log for details.','error',5);
+					pbfm1.updateProgressDialog({'dlabel':obj.error,'glabel':'Сбой операции дампа','dvalue':100,'gvalue':100,'istatus':'error-image'});
+					toast('Произошла ошибка в процессе создания дампа. Подробности смотрите в логе.','error',5);
 					cleanup(obj);
 				};
 				var inProgress = function(obj){
@@ -1308,16 +1308,16 @@
 						var filename = dump_object.file_path.substr(idx+1,dump_object.file_path.length-idx-1);
 						var szout = dump_object.save_offset>0 ? helper.patchfile_size.toString(16): (dump_object.sector_count*helper.sector_size).toString(16);
 						var norout = _nor ?  'NOR': 'NAND';
-						ulog('Dump Parameters:<br>Total Sector Count: 0x'+dump_object.sector_count.toString(16)+
-						'<br>Dump Start Offset: 0x'+dump_object.dump_start.toString(16)+
-						'<br>Dump File Path: '+dump_object.file_path+
-						'<br>Dump File Size: 0x'+szout+' bytes'+
-						'<br>Flash Memory Storage Object created'+
-						'<br>Detected Type: '+norout
+						ulog('Параметры дампа:<br>Общее количество секторов: 0x'+dump_object.sector_count.toString(16)+
+						'<br>Позиция начала дампа: 0x'+dump_object.dump_start.toString(16)+
+						'<br>Путь к файлу дампа: '+dump_object.file_path+
+						'<br>Размер файла дампа: 0x'+szout+' bytes'+
+						'<br>Объект хранения флэш-памяти создан'+
+						'<br>Обнаруженный тип: '+norout
 						);
 						var f = new fileObject(dump_object.file_path,helper.fs_flag_create_rw);
-						Logger.warn('fileObject created'+getElapsedTime(start));
-						ulog(f.size>0 ? 'File IO Overwriting '+dump_object.file_path : 'File IO Creating '+dump_object.file_path );
+						Logger.warn('fileObject создан'+getElapsedTime(start));
+						ulog(f.size>0 ? 'Перезапись файла ввода-вывода '+dump_object.file_path : 'Создание файлов ввода-вывода '+dump_object.file_path );
 						//Logger.error('Socket Handle 0x'+so.device_handle.toString(16));
 						var d = new dumpObject(so,f,dump_object);
 						Logger.warn('dumpObject '+getElapsedTime(start));
@@ -1327,8 +1327,8 @@
 						var tsz_written=0
 						var pbdetails = 0;
 						var pbglobal = 0;
-						var pblabdetails = 'Preparing Target File';
-						var pblabglobal = 'Starting Dump Operations';
+						var pblabdetails = 'Подготовка целевого файла';
+						var pblabglobal = 'Запуск операций дампа';
 						deferred = jQuery.Deferred();
 						deferred.promise().then(result,failed,inProgress);
 						Logger.warn('Promise '+getElapsedTime(start));
@@ -1337,24 +1337,24 @@
 								return;
 							}
 							else if(pbfm1.cancelled()){
-								deferred.reject({'f':f,'d':d,'error':'Dump Operations Cancelled By User','status':getElapsedTime(start)});
+								deferred.reject({'f':f,'d':d,'error':'Операции дампа отменены пользователем','status':getElapsedTime(start)});
 								return;
 							}
-							pblabdetails = obj.index!==0 ? 'Saving Extracted Data to File' : 'Extracting Flash Memory Data' ;//
+							pblabdetails = obj.index!==0 ? 'Сохранение извлеченных данных в файл' : 'Извлечение данных из флэш-памяти' ;//
 							pbdetails = 0;
 							setTimeout(function(){
 								deferred.notify({'glab': pblabglobal,'dlab': pblabdetails,'gval': pbglobal,'dval': pbdetails,'status':getElapsedTime(start)});
 							},0);
-							ulog('Flash Memory IO Current Sector: 0x'+(obj.index*obj.value + dump_object.dump_start).toString(16)+'<br>Flash Memory IO Reading 0x'+obj.value.toString(16)+' sectors');
+							ulog('Флэш-память IO текущий сектор: 0x'+(obj.index*obj.value + dump_object.dump_start).toString(16)+'<br>Чтение ввода-вывода флэш-памяти 0x'+obj.value.toString(16)+' секторов');
 							for(var t=0;t<d.rlen[obj.index].length;t++){
 								var rlen = helper.memory.upeek32(d.rlen[obj.index][t]);
 								var err = helper.memory.upeek32(d.rret[obj.index][t]);
 								if(err!==0 || rlen === 0 || rlen > 0x800  ){
-									deferred.reject({'f':f,'d':d,'error':err === 0xFFFFFFFF ?  'Thread Synchronization error' : err === 0 ? 'Invalid Flash Memory Read Length 0x'+rlen.toString(16) : 'Flash Memory Read Error 0x'+err.toString(16),'status':getElapsedTime(start)});
+									deferred.reject({'f':f,'d':d,'error':err === 0xFFFFFFFF ?  'Ошибка синхронизации потоков' : err === 0 ? 'Неверная длина чтения флэш-памяти 0x'+rlen.toString(16) : 'Ошибка чтения флэш-памяти 0x'+err.toString(16),'status':getElapsedTime(start)});
 									return;
 								}
 							}
-							helper.worker['fmm'].run(d.sfw[obj.index],'Writing Data to File',function(){Logger.info('Writing Data to File');},function(){check_write(obj);});
+							helper.worker['fmm'].run(d.sfw[obj.index],'Запись данных в файл',function(){Logger.info('Запись данных в файл');},function(){check_write(obj);});
 							return;
 						};
 						var check_write = function(obj){
@@ -1362,13 +1362,13 @@
 								return;
 							}
 							else if(pbfm1.cancelled()){
-								deferred.reject({'f':f,'d':d,'error':'Dump Operations Cancelled by User','status':getElapsedTime(start)});
+								deferred.reject({'f':f,'d':d,'error':'Операции дампа отменены пользователем','status':getElapsedTime(start)});
 								return;
 							}
 							var err = helper.memory.upeek32(d.wret[obj.index]);
 							var fnl = rem_sec > 0 ? max_it : max_it-1;
 							var size = dump_object.save_offset!==0 ? helper.patchfile_size: obj.value*helper.sector_size;
-							pblabdetails = obj.index!==fnl ? 'Extracting Data from Flash Memory':'Dump Operations Complete';//
+							pblabdetails = obj.index!==fnl ? 'Извлечение данных из флэш-памяти':'Операции по дампу завершены';//
 							pbdetails = 100;
 							pbglobal += inc;
 							pbglobal = pbglobal===100 ? 99 : pbglobal;
@@ -1377,23 +1377,23 @@
 							if(err!==0 || szw!==size){
 								f.size += szw;
 								var errstr = err > 0 ? ' 0x' + err.toString(16) : '';
-								Logger.error('Dump Object mt_save error: '+ errstr + '<br>Dump Object mt_save Data Size:  0x'+szw.toString(16)+' bytes written to file - Expected: 0x'+size.toString(16)+' bytes');
-								deferred.reject({'f':f,'d':d,'error':err === 0xFFFFFFFF ?  'Thread Synchronization error' : 'File Save IO Error 0x'+err.toString(16),'status':getElapsedTime(start)});
+								Logger.error('Ошибка объекта дампа mt_save: '+ errstr + '<br>Объект дампа mt_save размер данных:  0x'+szw.toString(16)+' байтов, записанных в файл - ожидается: 0x'+size.toString(16)+' байтов');
+								deferred.reject({'f':f,'d':d,'error':err === 0xFFFFFFFF ?  'Ошибка синхронизации потоков' : 'Ошибка ввода-вывода при сохранении файла 0x'+err.toString(16),'status':getElapsedTime(start)});
 								return;
 							}
 							f.size += size;
 							tsz_written +=parseFloat(Math.round((szw/0x100000) * 100) / 100);
-							pblabglobal = 'Saved '+tsz_written.toString()+' Mb to \''+filename+'\'';//
+							pblabglobal = 'Сохранено '+tsz_written.toString()+' Мб в \''+filename+'\'';//
 							setTimeout(function(){
 								deferred.notify({'glab': pblabglobal,'dlab': pblabdetails,'gval': pbglobal,'dval': pbdetails,'status':getElapsedTime(start)});
 							},0);
 							Logger.info(d.log[obj.index]);
 							//Logger.trace(d.log[obj.index]);
-							ulog('File IO Total Size Written to File '+tsz_written.toString()+'Mb');
+							ulog('Файл IO Общий размер, записанный в файл '+tsz_written.toString()+'Мб');
 							if(obj.index===fnl){
-								Logger.warn('Dump Complete '+getElapsedTime(start));
+								Logger.warn('Дамп завершен '+getElapsedTime(start));
 								setTimeout(function(){
-									ulog('Flash Memory successfully dumped in<br>'+dump_object.file_path);
+									ulog('Флэш-память успешно сдамплена в<br>'+dump_object.file_path);
 									deferred.resolve({'f':f,'d':d,'filename':filename});
 								},0);
 							}
@@ -1402,16 +1402,16 @@
 								var ix = obj.index+1;
 								ix = ix < max_it ? ix : rem_sec > 0 && ix === max_it ? ix : 0;
 								if(ix>0){
-									helper.worker['fmm'].run(d.sfr[ix],'Reading Data from Flash Memory',function(){Logger.info('Reading Data from Flash Memory');},function(){
+									helper.worker['fmm'].run(d.sfr[ix],'Чтение данных из флэш-памяти',function(){Logger.info('Чтение данных из флэш-памяти');},function(){
 										sread({'index':ix,'value': ix < max_it ? dump_object.nsec_iter : rem_sec});
 									});
 								}
 							}
 						};
-						helper.worker['fmm'].run(d.sfr[0],'Reading Data from Flash Memory',function(){Logger.info('Reading Data from Flash Memory');},function(){sread({'index':0,'value':max_it > 0 ? dump_object.nsec_iter : rem_sec > 0 ? rem_sec : 0});});
+						helper.worker['fmm'].run(d.sfr[0],'Чтение данных из флэш-памяти',function(){Logger.info('Чтение данных из флэш-памяти');},function(){sread({'index':0,'value':max_it > 0 ? dump_object.nsec_iter : rem_sec > 0 ? rem_sec : 0});});
 					}
 					catch(e){
-						Logger.error('<h2><b>JS Exception: </b></h2><br>'+e);
+						Logger.error('<h2><b>JS исключение: </b></h2><br>'+e);
 					}
 				};
 				var idps_dump = function(iobj){
@@ -1421,10 +1421,10 @@
 					fo.close();
 					delete fo;
 					if(iret==0){
-						infoDialog('IDPS saved at '+ iobj.file_path,'Saved IDPS',function(){});
+						infoDialog('IDPS сохранено в '+ iobj.file_path,'Сохраненный IDPS',function(){});
 					}
 					else{
-						infoDialog('Error 0x'+iret.toString(16)+' saving IDPS at '+ iobj.file_path,'Error saving IDPS',function(){});
+						infoDialog('Ошибка 0x'+iret.toString(16)+' сохранения IDPS в '+ iobj.file_path,'Не удалось сохранить IDPS',function(){});
 					}
 					helper.heap.free([idps_offset]);
 				};
@@ -1435,25 +1435,25 @@
 					ulog(start,true);
 					try{
 						var norout = _nor ?  'NOR': 'NAND';
-						ulog('Patch Parameters:<br>Patch Total Sector Count: 0x'+patch_object.sector_count.toString(16)+
-							'<br>Patch Start Offset: 0x'+patch_object.patch_start.toString(16)+
-							'<br>Flash Memory Storage Object created'+
-							'<br>Detected Type: '+norout
+						ulog('Параметры патча:<br>Патч общего количества секторов: 0x'+patch_object.sector_count.toString(16)+
+							'<br>Позиция начала патча: 0x'+patch_object.patch_start.toString(16)+
+							'<br>Объект хранения флэш-памяти создан'+
+							'<br>Обнаруженный тип: '+norout
 						);
 						var po = new patchObject(so,patch_object);
 						var cleanup = function(){
 							var serr=so.close();
-							if(serr!==0){ulog('Flash Memory Storage Object Close Error: 0x'+serr.toString(16));}
+							if(serr!==0){ulog('Ошибка закрытия объекта хранилища флэш-памяти: 0x'+serr.toString(16));}
 							delete po;
-							ulog('Flash Memory Patching Operations Cleanup');
+							ulog('Очистка операций патчинга флэш-памяти');
 						};
 						var result = function(){
 							helper.sp.playOK();
-							ulog('Flash Memory successfully patched');
+							ulog('Флэш-память успешно пропатчена');
 							cleanup();
 							setTimeout(function(){
-								toast('You can reboot your console.','success',5);
-								pbfm1.updateProgressDialog({'gvalue':100,'glabel':'Patch applied successfully','istatus':'success-image'});
+								toast('Вы можете перезагрузить консоль.','success',5);
+								pbfm1.updateProgressDialog({'gvalue':100,'glabel':'Патч успешно применен','istatus':'success-image'});
 								
 							},750);
 							//setTimeout(helper.sp.playOK,1500);
@@ -1461,22 +1461,22 @@
 						var failed = function(o){
 							helper.sp.playNG();
 							ldiag.removePatch();
-							ulog('Flash Memory Patching Process Error<br>'+o.error.toString(16));
+							ulog('Ошибка процесса патчинга флэш-памяти<br>'+o.error.toString(16));
 							pbfm1.updateStatusText(o.status);
-							pbfm1.updateProgressDialog({'dlabel':o.error,'glabel':'Patching Operations Failure','dvalue':100,'gvalue':100,'istatus':'error-image'});
+							pbfm1.updateProgressDialog({'dlabel':o.error,'glabel':'Сбой операций патчинга','dvalue':100,'gvalue':100,'istatus':'error-image'});
 							cleanup();
 							if(o.recalculateSHA===true){
-								ulog('Checking for Flash Memory changes');
+								ulog('Проверка изменений флэш-памяти');
 								ft1.refreshFM_node(function(changes){
 									if(changes === true){
-										ulog('Data was written to the Flash Memory. DO NOT REBOOT without fixing the ROS regions first.');
-										toast('An error occurred during the patching process & data was written to the Flash Memory. DO NOT reboot the console with the Flash Memory in the current state. Check the log for details.','error',5);
-										Logger.error('Patching failed and data was written to the Flash Memory. You must repair the damage. DO NOT REBOOT.');
+										ulog('Данные были записаны во флэш-память. НЕ ПЕРЕЗАГРУЖАЙТЕ, не исправив предварительно регионы ROS.');
+										toast('Произошла ошибка во время процесса пропатчивания и данные были записаны во флэш-память. НЕ перезагружайте консоль с флэш-памятью в текущем состоянии. Подробности смотрите в логе.','error',5);
+										Logger.error('Пропатчивание не удалось и данные были записаны во флэш-память. Вы должны устранить ущерб. НЕ ПЕРЕЗАГРУЖАТЬ.');
 									}
 									else{
-										ulog('No data was written to the Flash Memory.');
-										Logger.warn('Patching failed but no data has been written to the Flash Memory.');
-										toast('An error occurred during the patching process but no data has been written to the Flash Memory. It should be safe to reboot. Check the logs for details.','warning',5);
+										ulog('Данные не были записаны во флэш-память.');
+										Logger.warn('Пропатчивание не удалось, но данные не были записаны во флэш-память.');
+										toast('Произошла ошибка во время процесса пропатчивания, но данные не были записаны во флэш-память. Перезагрузка должна быть безопасной. Подробности смотрите в логах.','warning',5);
 									}
 								});
 							}
@@ -1490,8 +1490,8 @@
 						var patchROS = function(idx){
 							var pbdetails = 0;
 							var pbglobal = idx*40;
-							var pblabdetails = 'Patching Flash Memory Region ROS'+idx.toString();
-							var pblabglobal = 'Flash Memory Patch Operations';
+							var pblabdetails = 'Пропатчивание области флэш-памяти ROS'+idx.toString();
+							var pblabglobal = 'Операции патча флэш-памяти';
 							if(deferred.state()!=='pending'){
 								return;
 							}
@@ -1500,11 +1500,11 @@
 								if(helper.memory.upeek32(po.ret[idx][i])=== 0xFFFFFFFF){ret++;}
 							}
 							if(cp>0){
-								deferred.reject({'error':'Flash Memory Write Operations failed','status':getElapsedTime(start),'recalculateSHA': cp===po.ret.length ? false : true});
+								deferred.reject({'error':'Сбой операций записи во флэш-память','status':getElapsedTime(start),'recalculateSHA': cp===po.ret.length ? false : true});
 								return;
 							}
 							var offt = idx===0 ? patch_object.data_buffer.offset + patch_object.offset_data.ros0 : patch_object.data_buffer.offset + patch_object.offset_data.ros1;
-							Logger.info('Patching ROS'+idx.toString()+' with buffered data at 0x'+offt.toString(16));
+							Logger.info('Пропатчивание ROS'+idx.toString()+' с буферизованными данными в 0x'+offt.toString(16));
 							setTimeout(function(){
 								deferred.notify({'glab': pblabglobal,'dlab': pblabdetails,'gval': pbglobal,'dval': pbdetails,'status':getElapsedTime(start)});
 							},0);
@@ -1514,25 +1514,25 @@
 								if(wlen === 0 || wlen===0xFFFFFFFF){cnt++;}
 							}
 							if(cnt>0){
-								deferred.reject({'error':'Flash Memory Write Operations failed some sectors without errors','status':getElapsedTime(start),'recalculateSHA': cnt===po.wlen.length ? false : true});
+								deferred.reject({'error':'Операции записи во флэш-память завершились неудачно, некоторые секторы были без ошибок','status':getElapsedTime(start),'recalculateSHA': cnt===po.wlen.length ? false : true});
 								return;
 							}
 							pbglobal = idx*40 + 20;
 							setTimeout(function(){
 								deferred.notify({'glab': pblabglobal,'dlab': pblabdetails,'gval': pbglobal,'dval': pbdetails,'status':getElapsedTime(start)});
 							},0);
-							ulog('ROS'+idx.toString()+' patch operations completed without errors');
+							ulog('ROS'+idx.toString()+' операции патча завершены без ошибок');
 							Logger.info(po.log[idx]);
 							//Logger.trace(po.log[idx]);
 							if(idx === 0){
 								if(!_nor){helper.memory.upoke32(patch_object.data_buffer.offset+0x14,0);}
-								helper.worker['fmm'].run(po.sfp[1],'Patching ROS1 Data',function(){Logger.info('Patching ROS1 Data');},function(){patchROS(1);});
+								helper.worker['fmm'].run(po.sfp[1],'Патчинг данных ROS1',function(){Logger.info('Патчинг данных ROS1');},function(){patchROS(1);});
 							}
 							else{
-								ulog('Calculating SHA256 checksum for ROS banks 0 & 1');
-								Logger.info('Calculating ROS banks SHA256 hashes');
-								pblabglobal = 'Flash Memory Post Patching Data Verifications';
-								pblabdetails = 'Calculating SHA256 checksums';
+								ulog('Вычисление контрольной суммы SHA256 для банков ROS 0 и 1');
+								Logger.info('Расчет хэшей SHA256 банков ROS');
+								pblabglobal = 'Проверка данных после пропатчивания флэш-памяти';
+								pblabdetails = 'Вычисление контрольных сумм SHA256';
 								pbdetails = 0;
 								deferred.notify({'status': getElapsedTime(start),'glab': pblabglobal,'dlab': pblabdetails,'gval': pbglobal,'dval': pbdetails});
 								ldiag.removePatch();
@@ -1545,33 +1545,33 @@
 									setTimeout(function(){
 										var status = ft1.checkFMSHA256();
 										if(status.ros0 && status.ros1){
-											ulog('Patch applied on ROS bank 0: YES<br>Patch applied on ROS bank 1: YES');
+											ulog('Патч применен к банку ROS 0: ДА<br>Патч применен к банку ROS 1: ДА');
 											pbglobal = 99;
 											pbdetails = 100;
-											pblabdetails = 'Idle';
+											pblabdetails = 'Ожидание';
 											deferred.notify({'status': getElapsedTime(start),'glab': pblabglobal,'dlab': pblabdetails,'gval': pbglobal,'dval': pbdetails});
 											setTimeout(function(){
 												deferred.resolve();
 											},200);
 										}
 										else{
-											var r0 = status.ros0 ? 'MATCH' : 'NO MATCH';
-											var r1 = status.ros1 ? 'MATCH' : 'NO MATCH';
-											Logger.info('SHA256 checksum for ROS bank 0 vs patch file checksum : '+r0+'<br>SHA256 checksum for ROS bank 1 vs patch file checksum : '+r1);
-											var u_r0 = status.ros0 ? 'YES' : 'NO';
-											var u_r1 = status.ros1 ? 'YES' : 'NO';
-											ulog('Patch applied on ROS bank 0: '+u_r0+'<br>Patch applied on ROS bank 1: '+u_r1);
-											deferred.reject({'status':getElapsedTime(start),'error':'SHA256 verification failed.','recalculateSHA':false});
+											var r0 = status.ros0 ? 'СООТВЕТСТВУЕТ' : 'НЕ СООТВЕТСТВУЕТ';
+											var r1 = status.ros1 ? 'СООТВЕТСТВУЕТ' : 'НЕ СООТВЕТСТВУЕТ';
+											Logger.info('Контрольная сумма SHA256 для банка ROS 0 по сравнению с контрольной суммой файла патча : '+r0+'<br>Контрольная сумма SHA256 для банка ROS 1 по сравнению с контрольной суммой файла патча : '+r1);
+											var u_r0 = status.ros0 ? 'ДА' : 'НЕТ';
+											var u_r1 = status.ros1 ? 'ДА' : 'НЕТ';
+											ulog('Патч применен к ROS банку 0: '+u_r0+'<br>Патч применен к ROS банку 1: '+u_r1);
+											deferred.reject({'status':getElapsedTime(start),'error':'Ошибка проверки SHA256.','recalculateSHA':false});
 										}
 									},250);
 								}
 								checkSHA256();
 							}
 						};
-						helper.worker['fmm'].run(po.sfp[0],'Patching ROS0 Data',function(){Logger.info('Patching ROS0 Data');},function(){patchROS(0);});
+						helper.worker['fmm'].run(po.sfp[0],'Патчинг данных ROS0',function(){Logger.info('Патчинг данных ROS0');},function(){patchROS(0);});
 					}
 					catch(e){
-						Logger.error('<h2><b>JS Exception: </b></h2><br>'+e);
+						Logger.error('<h2><b>JS исключение: </b></h2><br>'+e);
 					}
 				};
 				
@@ -1579,7 +1579,7 @@
 					sdiag = new sDialog();
 					ldiag = new lDialog();
 					pbfm1 = new pbfmDialog();
-					var ft_toast = toast('Extracting Data from the Flash Memory. Please wait...','warning',120);
+					var ft_toast = toast('Извлечение данных из флэш-памяти. Пожалуйста подождите...','warning',120);
 					jQuery( '#accordion' ).accordion({
 						event: 'mouseover' 
 					});
@@ -1588,6 +1588,6 @@
 						jQuery(document).tooltip();
 					},1500);
 				}
-				else {Logger.error('FMM Worker Thread creation failed');}
+				else {Logger.error('Не удалось создать рабочий поток в Менеджере флэш-памяти');}
 				</script>
 			

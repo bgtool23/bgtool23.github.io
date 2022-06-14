@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
 	<head>
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<title>PS3 Toolset by @bguerville</title>
+		<title>PS3 Toolset MOD by PSPx.Ru Team</title>
 		<script type='text/javascript' src="js/logger.pmin.js"></script>
 		<script>
 			"use strict"
@@ -14,14 +14,10 @@
 				{'library':'jquery','async':true,'fail':0,'url':'js/jquery-1.12.4.min.js','data':null},
 				{'library':'jqueryui','async':true,'fail':0,'url':'js/jquery-ui.min.js','data':null},
 				{'library':'mscb','async':true,'fail':0,'url':'js/mCustomScrollbar.concat.min.js','data':null},
-				{'library':'toast','async':true,'fail':0,'url':'js/toastmessage.min.js','data':null}
-
-				,
+				{'library':'toast','async':true,'fail':0,'url':'js/toastmessage.min.js','data':null},
 				{'library':'jstree','async':true,'fail':0,'url':'js/jstree.min.js','data':null},
-				{'library':'switch','async':true,'fail':0,'url':'js/jquery.switchButton.min.js','data':null}//,
-				//{'library':'splitter','async':true,'fail':0,'url':'js/jquery.splitter/jquery.splitter-1.5.1.js','data':null},
-				//{'library':'tablesorter','async':true,'fail':0,'url':'js/jquery.tablesorter-2.7.2.min.js','data':null}
-					];
+				{'library':'switch','async':true,'fail':0,'url':'js/jquery.switchButton.min.js','data':null}
+			];
 			var css = [
 				{'library':'sunny','async':true,'fail':0,'url':'assets/jqueryui/sunny/jquery-ui.pmin.css','data':null},
 				{'library':'eggplant','async':true,'fail':0,'url':'assets/jqueryui/eggplant/jquery-ui.pmin.css','data':null},
@@ -253,9 +249,9 @@
 						error: '402'
 					}
 				}).done(function(data) {
-					data==='OK' ? Logger.info('Session GC complete') : Logger.error('Session GC aborted');
+					data==='OK' ? Logger.info('Сессия GC завершена') : Logger.error('Сессия GC прервана');
 				}).fail(function() {
-					Logger.error('Session GC failed');
+					Logger.error('Сессия GC не удалась');
 				});
 
 			}
@@ -267,14 +263,14 @@
 				if(obj)updatePD(obj,dl_object.start);
 			};
 			var validateDownload=function(){
-				ulog('Patch download complete');
+				ulog('Загрузка патча завершена');
 				setTimeout(function(){
 					if(validatePatchFile(dl_object.buffer,dl_object.file)>0){
-						ulog('Patch validation: NG');
+						ulog('Проверка патча: NG');
 						updateNoValidationGUI(dl_object.buffer,dl_object.start,dl_object.file);
 					}
 					else{
-						ulog('Patch validation: OK');
+						ulog('Проверка патча: OK');
 						updateValidationGUI(dl_object.start,dl_object.file);
 					}
 					dl_object=null;
@@ -294,21 +290,21 @@
 				$(document).tooltip('disable');
 				$('.preloader').removeClass('ui-helper-hidden');
 				setTimeout(function(){
-					tabreload('flashmem',toast('Reloading the Flash Memory Manager. Please wait...','warning',120));
+					tabreload('flashmem',toast('Перезагрузка менеджера флэш-памяти. Пожалуйста подождите...','warning',120));
 				},100);
 			});
 			$('.refresh-me').click(function(){
 				$(document).tooltip('disable');
 				$('.preloader').removeClass('ui-helper-hidden');
 				setTimeout(function(){
-					tabreload('memedit',toast('Reloading the Userland Memory Editor. Please wait...','warning',120));
+					tabreload('memedit',toast('Перезагрузка редактора памяти Userland. Пожалуйста подождите...','warning',120));
 				},100);
 			});
 			$('.refresh-fe').click(function(){
 				$(document).tooltip('disable');
 				$('.preloader').removeClass('ui-helper-hidden');
 				setTimeout(function(){
-					tabreload('fileman',toast('Reloading the File Manager. Please wait...','warning',120));
+					tabreload('fileman',toast('Перезагрузка файлового менеджера. Пожалуйста подождите...','warning',120));
 				},100);
 			});
 			function tabreload(name,tost){
@@ -318,7 +314,7 @@
 						url: name+'.php',
 						method: 'GET'
 					}).done(function(data) {
-						if(data.length===0){Logger.error('Error loading resource file');return;}
+						if(data.length===0){Logger.error('Ошибка загрузки файла ресурсов');return;}
 						var o = $('#'+name);
 						var par = o.parent();
 						if(name==='memedit'){
@@ -501,7 +497,7 @@
 				create: function( event, ui ){
 					var cdate = new Date();
 					if(get_day()!== cdate.getUTCDay().toString() || get_year() !== cdate.getUTCFullYear().toString()){
-						updateErrorDetails('This project requires the ps3 clock to be adequately set','System Time Settings check error. Please adjust your system\'s clock.');
+						updateErrorDetails('Этот проект требует правильной настройки часов PS3.','Ошибка проверки системного времени. Пожалуйста, настройте системные часы.');
 						return;
 					}
 					else{
@@ -512,7 +508,7 @@
 								file: 'biginteger.pmin.js'
 							}
 						}).done(function(data) {
-							if(data.length===0){updateErrorDetails('The PS3 exploitation framework could not be loaded','Integer library file loading error');return;}
+							if(data.length===0){updateErrorDetails('Не удалось загрузить фреймворк эксплоита PS3.','Ошибка загрузки файла целочисленной библиотеки');return;}
 							eval(data);
 							$.ajax({
 								url: 'file3.php',
@@ -521,10 +517,10 @@
 									file: 'framework.pmin.js'
 								}
 							}).done(function(data) {
-								if(data.length===0){updateErrorDetails('The PS3 exploitation framework could not be loaded','Exploitation framework library file loading error');return;}
+								if(data.length===0){updateErrorDetails('Не удалось загрузить фреймворк эксплоита PS3.','Ошибка загрузки файла библиотеки фреймворка эксплоита');return;}
 								eval(data);
 								if(jsleak32(0x10000)!==0x7F454C46){
-									updateErrorDetails('The console is not a CEX/DEX PS3 model','Incompatible console detected');
+									updateErrorDetails('Консоль не является CEX/DEX моделью PS3.','Обнаружена несовместимая консоль');
 									return;
 								}
 								var fpwait = 0;
@@ -532,24 +528,24 @@
 									fpwait++;
 									if(fp9loaded===false){
 										if(fpwait<16){
-											if(fpwait===1){Logger.warn('Waiting for the PS3 Flash Player 9 plugin...');}
+											if(fpwait===1){Logger.warn('В ожидании плагина PS3 Flash Player 9...');}
 											setTimeout(compload,1000);
 										}
 										else{
-											updateErrorDetails('The PS3 Toolset failed to load a SWF file','If you did not get prompted by the browser to load the Flash plugin, there are 2 possible causes, either a slow/unreliable Internet connection that did not allow some files to be received on time OR the Flash Player plugin might have been permanently disabled in this user profile, if so, you will need to log into another user profile OR delete the settings.xml file in the current profile webbrowser folder if you are on CFW/HEN.');
-											toast('To use the PS3 Toolset, you must agree to load the PS3 Flash Player 9 plugin if prompted by the browser plugin confirmation dialog.<br/>Please check the logs for more information.','warning',7);
+											updateErrorDetails('Набору PS3 Toolset не удалось загрузить SWF-файл','Если вы не получили от браузера запрос на загрузку подключаемого модуля Flash, возможны 2 причины: либо медленное/ненадежное подключение к Интернету, из-за которого некоторые файлы не могут быть получены вовремя, либо подключаемый модуль Flash Player мог быть навсегда отключен в этом профиле пользователя, если это так, вам нужно будет войти в другой профиль пользователя ИЛИ удалить файл settings.xml в папке веб-браузера текущего профиля, если вы находитесь на CFW/HEN.');
+											toast('Чтобы использовать PS3 Toolset, вы должны согласиться загрузить подключаемый модуль PS3 Flash Player 9, если появится диалоговое окно подтверждения подключаемого модуля браузера.<br/>Пожалуйста, проверьте логи для получения дополнительной информации.','warning',7);
 											setTimeout(function(){
 												setTimeout(function(){
 													$('#dg-confirm').parent().find('.ui-dialog-buttonpane').find('button:last').focus();
 												},750);
-												confirmDialog('The PS3 Toolset will now attempt to reload. Do you want to continue?','Toolset Refresh',function(){location.reload();});
+												confirmDialog('Набор PS3 Toolset теперь попытается перезагрузиться. Вы хотите продолжить?','Обновление Toolset',function(){location.reload();});
 											},5200);
 										}
 										return;
 									}
 									else if(navigator.plugins.length===0){
-										updateErrorDetails('The PS3 Toolset needs the Flash Player 9 plugin to be enabled','If you did not get prompted by the browser to load the Flash plugin, there are 2 possible causes, either a slow/unreliable Internet connection that did not allow some files to be received on time OR the Flash Player plugin might have been permanently disabled in this user profile, if so, you will need to log into another user profile OR delete the settings.xml file in the current profile webbrowser folder if you are on CFW/HEN.');
-										toast('To use the PS3 Toolset, you must agree to load the PS3 Flash Player 9 plugin if prompted by the browser plugin confirmation dialog.<br/>Please check the logs for more information.','warning',7);
+										updateErrorDetails('Для набора PS3 Toolset требуется, чтобы подключаемый модуль Flash Player 9 был включен.','Если вы не получили от браузера запрос на загрузку подключаемого модуля Flash, возможны 2 причины: либо медленное/ненадежное подключение к Интернету, из-за которого некоторые файлы не могут быть получены вовремя, либо подключаемый модуль Flash Player мог быть навсегда отключен в этом профиле пользователя, если это так, вам нужно будет войти в другой профиль пользователя ИЛИ удалить файл settings.xml в папке веб-браузера текущего профиля, если вы находитесь на CFW/HEN.');
+										toast('Чтобы использовать PS3 Toolset, вы должны согласиться загрузить подключаемый модуль PS3 Flash Player 9, если появится диалоговое окно подтверждения подключаемого модуля браузера.<br/>Пожалуйста, проверьте логи для получения дополнительной информации.','warning',7);
 										return;
 									}
 									else{
@@ -558,10 +554,10 @@
 								}
 								setTimeout(compload,1000);
 							}).fail(function(data) {
-								updateErrorDetails('The PS3 exploitation framework download failed','Exploitation framework library file downloading error');
+								updateErrorDetails('Не удалось загрузить фреймворк эксплоита PS3.','Ошибка загрузки файла библиотеки фреймворка эксплоита');
 							});
 						}).fail(function(data) {
-							updateErrorDetails('The PS3 exploitation framework download failed','Integer library file downloading error');
+							updateErrorDetails('Не удалось загрузить фреймворк эксплоита PS3.','Ошибка загрузки файла целочисленной библиотеки');
 						});
 					}
 				},
@@ -631,7 +627,7 @@
 								cstyle==='redmond' ? 'assets/jqueryui/redmond/images/loading_bar_blue.gif':
 								'assets/jqueryui/sunny/images/loading_bar_darkbrown.gif';
 						$('.ui-tabs-anchor').addClass('ui-state-disabled');
-						ui.panel.html('<div class=\'container-loading-bar\'><table><tbody><tr><td><div align=\'center\' class=\'min-width-200 pad-bottom-10px\'><b>Downloading tool, please wait...</b></div></td></tr><tr><td><div class=\'loading-bar\'></div></td></tr></tbody></table></div>');
+						ui.panel.html('<div class=\'container-loading-bar\'><table><tbody><tr><td><div align=\'center\' class=\'min-width-200 pad-bottom-10px\'><b>Загрузка инструмента, пожалуйста, подождите...</b></div></td></tr><tr><td><div class=\'loading-bar\'></div></td></tr></tbody></table></div>');
 						$('.loading-bar').append(img);
 						ui.jqXHR.fail(function() {
 							if(reloads<3){
@@ -700,28 +696,28 @@
 	<body id="BodyID" class="ui-helper-hidden" style="overflow: hidden;height:auto;visibility:hidden;">
 		<div class="preloader ui-helper-hidden"><div class="container-busy-icon"><div class="busy-icon"></div></div></div>
 			<div id="title" class="ui-helper-hidden main-title ui-widget-header ui-corner-all">
-				<h1>PlayStation 3 Toolset <span class='header-small-text'>by @bguerville</span></h1>
-				<h4 id='ps3details' class="ps3-details">Initializing PS3 Toolset v1.1 <span class='header-small-text'>build 003</span><br/>Please Wait</h4>
+				<h1>PlayStation 3 Toolset MOD <span class='header-small-text'>by PSPx Team</span></h1>
+				<h4 id='ps3details' class="ps3-details">Инициализация PS3 Toolset MOD v1.1 <span class='header-small-text'>build 004</span><br/>Пожалуйста, подождите...</h4>
 				<form action="#">
 					<select id="themes" >
-						<option value="dummy" disabled selected>Change Theme</option>
-						<option value="sunny" >Sunny</option>
-						<option value="eggplant" disabled>Eggplant</option>
-						<option value="hot-sneaks">Hot Sneaks</option>
-						<option value="redmond">Redmond</option>
+						<option value="dummy" disabled selected>Сменить тему</option>
+						<option value="sunny" >Солнечно</option>
+						<option value="eggplant" disabled>Баклажан</option>
+						<option value="hot-sneaks">Тропики</option>
+						<option value="redmond">Редмонд</option>
 					</select>
 				</form>
 			</div>
 			<div id="tabs" class='ui-helper-hidden main-tabs ' style='height:780px;min-height:780px;'>
 				<ul>
-					<li><a href='#toolset'><i class="fa fa-home fa-fw"></i> Home</a></li>
-					<li><a href='memedit.php'><i class="fa fa-table fa-fw"></i> Memory Editor<span title='Refresh Memory Editor Tab' class='refresh fa fa-refresh ui-state-disabled refresh-me pointer tab-icon'></span></a></li>
-					<li><a href='flashmem.php'><i class="fa fa-microchip fa-fw"></i> Flash Memory Manager<span title='Refresh Flash Memory Manager Tab' class='refresh fa fa-refresh ui-state-disabled refresh-fm pointer tab-icon'></span></a></li>
-					<li><a href='fileman.php'><i class="fa fa-table fa-hdd-o"></i> File Manager (soon)<span title='Refresh File Manager Tab' class='refresh fa fa-refresh ui-state-disabled refresh-fe pointer tab-icon'></span></a></li>
-					<li><a href='#tblog'><i class="fa fa-list-alt fa-fw"></i> Logs</a></li>
+					<li><a href='#toolset'><i class="fa fa-home fa-fw"></i> Домашняя</a></li>
+					<li><a href='memedit.php'><i class="fa fa-table fa-fw"></i> Редактор памяти<span title='Обновить вкладку Редактор памяти' class='refresh fa fa-refresh ui-state-disabled refresh-me pointer tab-icon'></span></a></li>
+					<li><a href='flashmem.php'><i class="fa fa-microchip fa-fw"></i> Менеджер флэш-памяти<span title='Обновить вкладку Менеджер флэш-памяти' class='refresh fa fa-refresh ui-state-disabled refresh-fm pointer tab-icon'></span></a></li>
+					<li><a href='fileman.php'><i class="fa fa-table fa-hdd-o"></i> Файловый менеджер (скоро)<span title='Обновить вкладку Файловый менеджер' class='refresh fa fa-refresh ui-state-disabled refresh-fe pointer tab-icon'></span></a></li>
+					<li><a href='#tblog'><i class="fa fa-list-alt fa-fw"></i> Логи</a></li>
 				</ul>
 				<div id="toolset">
-					<h2 align='right' class='tab-header'>PS3 Toolset <span class='header-tiny-text'>v1.1.003</span></h2>
+					<h2 align='right' class='tab-header'>PS3 Toolset MOD <span class='header-tiny-text'>v1.1.004</span></h2>
 					<div class='intro-table'>
 						<div class='box-table' style="max-height:620px;min-height:600px;height:620px;">
 							<div class='box-cell-30 '>
@@ -734,7 +730,7 @@
 														<i class="fa fa-square-o fa-stack-2x fa-fw"></i>
 														<i class="fa fa-commenting-o fa-stack-1x fa-fw" style="font-size:8px;"></i>
 													</span>
-													<span class='top2px baloo-header'> Welcome</span>
+													<span class='top2px baloo-header'> Добро пожаловать</span>
 												</div>
 											</th>
 										</tr>
@@ -742,9 +738,9 @@
 											<td id='intr' align="justify" class="window-content-top">
 												<div class='sizer'>
 													<i class="fa fa-border fa-quote-left fa-pull-left fa-fw" style="font-size:10px;"></i>
-													The PS3 Toolset is a repository project for tools built upon my latest ps3 exploitation framework v4.1.<br/>
-													New tools & features should be added to this repository with time.<br/>
-													I hope you enjoy using them as much as I enjoy making them.
+													PS3 Toolset — это репозиторий инструментов, созданных на основе фреймворка 4.1 эксплоита для PS3.<br/>
+													Новые инструменты и функционал будут добавляться со временем.<br/>
+													Надеемся, что вам понравится использовать его функционал.
 													<i class="fa fa-border fa-quote-right fa-pull-right fa-fw" style="font-size:10px;"></i>
 													<br/>
 													<div class='pad-sig align-right'>@bguerville</div>
@@ -768,16 +764,16 @@
 														<i class="fa fa-square-o fa-stack-2x fa-fw"></i>
 														<i class="fa fa-exclamation-triangle fa-stack-1x fa-fw" style="font-size:8px;"></i>
 													</span>
-													<span class='top2px baloo-header'> Privacy</span>
+													<span class='top2px baloo-header'> Конфиденциальность</span>
 												</div>
 											</th>
 										</tr>
 										<tr class="logoptions window-content-top ui-widget-content">
 											<td id='security' align="justify" class="window-content-top">
 												<div class='sizer'>
-													This website does not collect or store any information of personal or technical nature related to you or your console.<br/>
-													No data from your console ever gets transmitted to our web server when using the PS3 Toolset tools, all operations are conducted locally.<br/>
-													Cookies are used locally on the ps3 for persisting a handful of PS3 Toolset variables from one session to the next.
+													Этот веб-сайт не собирает и не хранит никакой информации личного или технического характера, связанной с вами или вашей консолью.<br/>
+													Никакие данные никогда не передаются на наш веб-сервер при использовании инструментов PS3 Toolset, все операции выполняются локально.<br/>
+													Файлы cookie используются локально на PS3 для сохранения нескольких переменных PS3 Toolset от одного сеанса к другому.
 												</div>
 											</td>
 										</tr>
@@ -791,92 +787,93 @@
 							</div>
 							<div class='width-600 box-cell-70' >
 								<div id="intro-accordion">
-								<h3> Latest News</h3>
+								<h3> Последние новости</h3>
 								<div>
 									<div align='left' class='wrap-don'>
 									<br/><br/>
-										10/06/2022 Update v1.1.004
+										10/06/2022 Обновление v1.1.004
 										<ul class="fa-ul">
-											<li><i class="fa-li fa fa-chevron-circle-right"></i>Added support for 4.89 CEX<br/></li>
-											<li><i class="fa-li fa fa-chevron-circle-right"></i>Flash NC Exploit update v3.0<br/></li>
-											<li><i class="fa-li fa fa-chevron-circle-right"></i>FMM update v1.3.1<br/></li>
-											<li><i class="fa-li fa fa-chevron-circle-right"></i>JS Framework update v4.2<br/></li>
+											<li><i class="fa-li fa fa-chevron-circle-right"></i>Добавлена поддержка 4.89 CEX<br/></li>
+											<li><i class="fa-li fa fa-chevron-circle-right"></i>Flash NC эксплоит обновление v3.0<br/></li>
+											<li><i class="fa-li fa fa-chevron-circle-right"></i>Менеджер флэш-памяти обновление v1.3.1<br/></li>
+											<li><i class="fa-li fa fa-chevron-circle-right"></i>JavaScript фреймворк обновление v4.2<br/></li>
 										</ul>
 									</div>
 									<br/>
 									<div align='right' class='wrap-don'>
 										<i class="fa fa-border fa-quote-left fa-fw" style="font-size:8px;"></i>
-										<span style="font-size:11px;font-style:italic;">Just a minor release!</span>
+										<span style="font-size:11px;font-style:italic;">Просто небольшой релиз!</span>
 										<i class="fa fa-border fa-quote-right fa-fw" style="padding-left:5px;font-size:8px;"></i>
 									</div>
 									<br/>
 								</div>
-								<h3> General Information</h3>
+								<h3> Основная информация</h3>
 								<div>
 									<div align='left' class='wrap-don'>
 										<ul class="fa-ul">
-											<li><i class="fa-li fa fa-chevron-circle-right"></i>You are free to use the tools in this project at your own risk.
-												Keep in mind that no official support is provided, if you experience any kind of problem & find yourself in need of help, I strongly recommend that you turn to the <a href="https://www.psx-place.com/forums/PS3Xploit/" title="https://www.psx-place.com/forums/PS3Xploit/">PS3Xploit sub-forum on psx-place.com</a> for support & guidance..</li>
-											<li><i class="fa-li fa fa-chevron-circle-right"></i>The Flash Player 9 browser plugin must be enabled to use the PS3 Toolset.<br/>
-											If ever you disabled it permanently in the current user profile, you may need to log in as another user or create a new profile to be able to use any of the tools in this project.</li>
-											<li><i class="fa-li fa fa-chevron-circle-right"></i>You can enable Flash permanently by checking the "Do not display again" checkbox in the plugin confirmation screen before accepting to load the Flash plugin.</li>
-											<li><i class="fa-li fa fa-chevron-circle-right"></i>It is highly recommended that you adjust the console's System Time settings properly to avoid any time related issues with the browser and/or the Flash Player plugin.</li>
-											<li><i class="fa-li fa fa-chevron-circle-right"></i>To avoid potential crashes, you should never attempt to close the browser while toolset operations are in progress, especially when the browser exit confirmation setting is turned off.</li>
+											<li><i class="fa-li fa fa-chevron-circle-right"></i>Вы можете использовать инструменты в этом проекте на свой страх и риск.
+											Имейте в виду, что официальная поддержка не предоставляется. Если у вас возникнут какие-либо проблемы и вам понадобится помощь, настоятельно рекомендуем обратиться на <a href="https://www.pspx.ru/forum/showthread.php?t=109943" title="PlayStation 3 Toolset MOD by PSPx Team">PSPx Forum</a> за поддержкой и рекомендациями.</li>
+											<li><i class="fa-li fa fa-chevron-circle-right"></i>Для использования набора инструментов PS3 необходимо включить подключаемый модуль браузера Flash Player 9.<br/>
+											Если вы когда-нибудь отключили его навсегда в текущем профиле пользователя, вам может потребоваться войти в систему как другой пользователь или создать новый профиль, чтобы иметь возможность использовать любой из инструментов в этом проекте.</li>
+											<li><i class="fa-li fa fa-chevron-circle-right"></i>Вы можете включить Flash на постоянной основе, установив флажок «Больше не отображать» на экране подтверждения плагина перед тем, как согласиться на загрузку плагина Flash.</li>
+											<li><i class="fa-li fa fa-chevron-circle-right"></i>Настоятельно рекомендуется правильно настроить параметры системного времени консоли, чтобы избежать проблем, связанных со временем, в браузере и/или подключаемом модуле Flash Player.</li>
+											<li><i class="fa-li fa fa-chevron-circle-right"></i>Во избежание возможных сбоев никогда не пытайтесь закрыть браузер во время выполнения операций с набором инструментов, особенно если параметр подтверждения выхода из браузера отключен.</li>
 										</ul>
 									</div>
 								</div>
-								<h3> Minimum Requirements</h3>
+								<h3> Минимальные требования</h3>
 								<div>
 									<div align='left' class='wrap-don'>
 										<ul class="fa-ul" style="line-height:22px;">
-											<li><i class="fa-li fa fa-chevron-circle-right" style="line-height:18px;"></i>PS3 Browser Flash Player 9 Plugin enabled<br/></li>
-											<li><i class="fa-li fa fa-chevron-circle-right" style="line-height:18px;"></i>PS3 Browser Javascript enabled<br/></li>
-											<li><i class="fa-li fa fa-chevron-circle-right" style="line-height:18px;"></i>PS3 Browser Cookies enabled<br/></li>
-											<li><i class="fa-li fa fa-chevron-circle-right" style="line-height:18px;"></i>PS3 Firmware: 4.80/4.81/4.82/4.83/4.84/4.85/4.86/4.87/4.88<br/></li>
-											<li><i class="fa-li fa fa-chevron-circle-right" style="line-height:18px;"></i>PS3 Firmware Type: OFW/HFW/MFW/CFW<br/></li>
-											<li><i class="fa-li fa fa-chevron-circle-right" style="line-height:18px;"></i>PS3 Firmware mode: CEX/DEX<br/></li>
-											<li><i class="fa-li fa fa-chevron-circle-right" style="line-height:18px;"></i>PS3 System Time accurately set<br/></li>
+											<li><i class="fa-li fa fa-chevron-circle-right" style="line-height:18px;"></i>Плагин браузера PS3 Flash Player 9 включен<br/></li>
+											<li><i class="fa-li fa fa-chevron-circle-right" style="line-height:18px;"></i>В браузере PS3 включен Javascript<br/></li>
+											<li><i class="fa-li fa fa-chevron-circle-right" style="line-height:18px;"></i>Файлы cookie браузера PS3 включены<br/></li>
+											<li><i class="fa-li fa fa-chevron-circle-right" style="line-height:18px;"></i>Прошивка PS3: 4.89<br/></li>
+											<li><i class="fa-li fa fa-chevron-circle-right" style="line-height:18px;"></i>Для прошивок 4.80-4.88 перейдите по адресу: <a href="https://www.ps3xploit.net/bgtoolset/" title="PlayStation 3 Toolset by @bguerville">PlayStation 3 Toolset by @bguerville</a><br/></li>
+											<li><i class="fa-li fa fa-chevron-circle-right" style="line-height:18px;"></i>Типы прошивок PS3: OFW/HFW/MFW/CFW<br/></li>
+											<li><i class="fa-li fa fa-chevron-circle-right" style="line-height:18px;"></i>Режимы прошивок PS3: CEX/DEX<br/></li>
+											<li><i class="fa-li fa fa-chevron-circle-right" style="line-height:18px;"></i>Системное время PS3 установлено точно<br/></li>
 										</ul>
 									</div>
 								</div>
-								<h3> Acknowledgements</h3>
+								<h3> Благодарности</h3>
 								<div>
 									<div class='wrap-don'>
-										<p>My warmest thanks to Jason, for his friendship & support of course, but in the context of this project, also for testing my work all year round whenever needed.<br/></p>
+										<p>Я искренне благодарю Джейсона за его дружбу и поддержку, конечно же, но в контексте этого проекта, а также за тестирование этой работы круглый год, по необходимости.<br/></p>
 										<br/>
-										<p>The PS3 Toolset & its GUI were built in native js upon various open source js libraries including jQuery, jQueryUI, bigInteger, jstree, mCustomScrollbar, js-logger, js-cookie, sjcl, switchButton & toastmessage as well as the Fork Awesome CSS icon library.<br/>Thanks to all the coders involved in the various projects.</p>
+										<p>Набор инструментов PS3 и его графический интерфейс были построены на основе js на основе различных js-библиотек с открытым исходным кодом, включая jQuery, jQueryUI, bigInteger, jstree, mCustomScrollbar, js-logger, js-cookie, sjcl, switchButton и toastmessage, а также библиотеке значков Fork Awesome CSS.<br/>Спасибо всем кодерам, участвовавшим в различных проектах.</p>
 										<br/>
-										<p>Thanks to ps3/vita scene hackers, developers, forum creators and psdevwiki contributors, all essential in bringing us to this point.</p>
+										<p>Спасибо хакерам сцены ps3/vita, разработчикам, создателям форумов и участникам psdevwiki, которые помогли нам дойти до этой точки.</p>
 									</div>
 								</div>
-								<h3> Help & Donations</h3>
+								<h3> Помощь и поддержка</h3>
 								<div>
 									<div class='wrap-don'>
-										On behalf of the PS3Xploit team & users, I would like to convey our sincere thanks to all Paypal donators for their support to date, their contributions so far have allowed the team to cover the ever growing maintenance costs.<br/>
-										We need your continued support if we are to keep providing the services we offer both free & ad-free.
-										If you wish to help us, consider a donation via Paypal at team@ps3xploit.net or in BTC at either of the addresses below.<br/><br/>
+										От имени команды и пользователей инструмента PS3Xploit хотелось бы выразить нашу искреннюю благодарность за поддержку по сегодняшний день, ваши тесты и советы позволяли команде вовремя реагировать и совершенствовать наш потенциал.<br/>
+										Нам нужна ваша постоянная моральная поддержка в развитии проекта, который мы разрабатываем бесплатно и без рекламы.
+										Если вы хотите помочь нам в нашем нелёгком деле, активнее учавствуйте в тестированиях, а мы вам будем очень благодарны!<br/><br/>
 										<div class='container-qr'>
 											<div class='box-table-180'>
 												<div class='box-row'>
 													<div class='box-cell-33'>
-														<img class="qr-size" src='assets/images/qr-legacy-P2PKH.png' title='1CWjJrrV5LxeFbSZAtcGXFgJ9wepFdZAqT'>
+														<img class="qr-size" src='assets/images/qr-legacy-P2PKH.png' title='Forum PS3 Toolset'>
 													</div>
 													<div class='box-cell-33'>
-														<img class="qr-size" src='assets/images/qr-native-segwit-BECH32.png' title='bc1qe8maczwynmkj3vkhz3p28kxtr0lqdefvkgrq72'>
+														<img class="qr-size" src='assets/images/qr-native-segwit-BECH32.png' title='Telegram PSPx Team'>
 													</div>
 													<div class='box-cell-33'>
-														<img class="qr-size" src='assets/images/qr-PayNyms.png' title='PM8TJKzzUZAzj3hdVezaMVXN62H6fFPPoRMZ2GPfE5jQx89RRaD9xS39ft2HE5QYGJ4qsxk7eCm6EqtFEnXxM8NuWbgW9uYXFYw4gcfs5XjTkyBp3JHc'>
+														<img class="qr-size" src='assets/images/qr-PayNyms.png' title='Forum PSPx.Ru Team'>
 													</div>
 												</div>
 												<div class='box-row'>
 													<div class='box-cell-33 pad-left-3pct'>
-														Legacy P2PKH
+														Форум PS3 Toolset
 													</div>
 													<div class='box-cell-33 pad-left-4pct'>
-														Segwit BECH32
+														Телеграм PSPx Chat
 													</div>
 													<div class='box-cell-33 pad-left-3pct'>
-														PayNyms
+														Форум PSPx.Ru Team
 													</div>
 												</div>
 											</div>
@@ -889,7 +886,7 @@
 				</div>
 			</div>
 			<div id='tblog' class="tb-log" style="max-height:90%;">
-				<h2 align='right'  class='tab-header'>Logs <span class='header-tiny-text'>v1.1</span></h2>
+				<h2 align='right'  class='tab-header'>Логи <span class='header-tiny-text'>v1.1</span></h2>
 				<div class="max-height-620">
 					<table class="window">
 						<tbody class=''>
@@ -899,16 +896,16 @@
 										<span class='min-width-410 dir-left' style="min-width:600px;width:600px;padding-left:0;">
 											<span class='sizer'>
 												<input type='checkbox' id='ilog' name='ilog' checked />
-												<label id="lilog" for="ilog" title="Logs" class="logbtn">Logs</label>
+												<label id="lilog" for="ilog" title="Логи" class="logbtn">Логи</label>
 												<input type='checkbox' class="ui-widget gui-item" id='iwarn' name='iwarn' checked />
-												<label id="liwarn" for="iwarn" title="Warnings" class="logbtn">Warnings</label>
+												<label id="liwarn" for="iwarn" title="Предупреждения" class="logbtn">Предупреждения</label>
 												<input type='checkbox' id='ierror' name='ierror' class='gui-item' checked  />
-												<label id="lierror" for="ierror" title="Errors" class="logbtn">Errors</label>
+												<label id="lierror" for="ierror" title="Ошибки" class="logbtn">Ошибки</label>
 												<input type='checkbox' id='idbg' name='idbg' class='gui-item' />
-												<label id="lidbg" for="idbg" title="Toolset Debugger logs" class="logbtn">Debug Messages</label>
+												<label id="lidbg" for="idbg" title="Журналы отладчика набора инструментов" class="logbtn">Отладочные сообщения</label>
 												<span style="padding-left:20px;font-size:8px;">
 													<button id="lpage_prev" class='gui-item'  style="max-width:40px;font-size:8px;margin-bottom:0.2em;"></button>
-													<span style="padding-left:5px;font-size:10px;"> Log page: </span>
+													<span style="padding-left:5px;font-size:10px;"> Страница лога: </span>
 													<span id="lpage_curr"> 1</span>
 													<span>/</span>
 													<span id="lpage_ntotal"  style="padding-right:5px;">1 </span>
@@ -916,8 +913,8 @@
 												</span>
 												<span style="padding-left:20px;">
 													<input type='checkbox' id='inet' name='inet' class='gui-item' />
-													<label for="inet" title="Toolset Debugger logs over UDP" >UDP Broadcast</label>
-													<label class='labport' for="port_txtbox" style="padding-left:5px;"> Port: </label>
+													<label for="inet" title="Отладчик набора инструментов ведет журнал через UDP" >UDP Broadcast</label>
+													<label class='labport' for="port_txtbox" style="padding-left:5px;"> Порт: </label>
 													<input type='text' id='port_txtbox' name='port_txtbox' class='gui-item port ui-corner-all' value='18194' />
 												</span>
 											</span>
