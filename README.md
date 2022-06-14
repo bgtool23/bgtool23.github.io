@@ -1,5 +1,7 @@
 # bgtoolset
 
+https://pspx.ru/forum/bgtoolset
+
 This is a dump of excellent Ps3xploit Team [bgtoolset](https://www.ps3xploit.net/bgtoolset/). **I'm not an author of any of these tools**, all credits go to
 Ps3xploit team.
 
