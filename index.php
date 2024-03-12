@@ -60,7 +60,8 @@
 			};
       var get_year =function() {return '<?php echo(date('Y')); ?>';};
       var get_day =function() {return '<?php echo(date('w')); ?>';};
-			var fwv = '4.89';
+			var ua=navigator.userAgent,
+			fwv=ua.substring(ua.indexOf("5.0 (")+19,ua.indexOf(") Apple"));
 			ftoken ='nkuvXulytN6nSzgn4qnROk49SYc3hLP6oWHd6s2wXv09';
 			token ='Bw/qr6BclFhqiJVLfkKbUiy1NKI7HX5jt6F3LjxD/Ok=';
 					function loadLib(idx){
@@ -696,8 +697,8 @@
 	<body id="BodyID" class="ui-helper-hidden" style="overflow: hidden;height:auto;visibility:hidden;">
 		<div class="preloader ui-helper-hidden"><div class="container-busy-icon"><div class="busy-icon"></div></div></div>
 			<div id="title" class="ui-helper-hidden main-title ui-widget-header ui-corner-all">
-				<h1>PlayStation 3 Toolset MOD <span class='header-small-text'>by PSPx Team</span></h1>
-				<h4 id='ps3details' class="ps3-details">Инициализация PS3 Toolset MOD v1.1 <span class='header-small-text'>build 004</span><br/>Пожалуйста, подождите...</h4>
+				<h1>PlayStation 3 Toolset MOD for 4.82-4.91 <span class='header-small-text'>by PSPx Team</span></h1>
+				<h4 id='ps3details' class="ps3-details">Инициализация PS3 Toolset MOD v1.2 <span class='header-small-text'>build 001</span><br/>Пожалуйста, подождите...</h4>
 				<form action="#">
 					<select id="themes" >
 						<option value="dummy" disabled selected>Сменить тему</option>
@@ -712,12 +713,11 @@
 				<ul>
 					<li><a href='#toolset'><i class="fa fa-home fa-fw"></i> Домашняя</a></li>
 					<li><a href='memedit.php'><i class="fa fa-table fa-fw"></i> Редактор памяти<span title='Обновить вкладку Редактор памяти' class='refresh fa fa-refresh ui-state-disabled refresh-me pointer tab-icon'></span></a></li>
-					<li><a href='flashmem.php'><i class="fa fa-microchip fa-fw"></i> Менеджер флэш-памяти<span title='Обновить вкладку Менеджер флэш-памяти' class='refresh fa fa-refresh ui-state-disabled refresh-fm pointer tab-icon'></span></a></li>
-					<li><a href='fileman.php'><i class="fa fa-table fa-hdd-o"></i> Файловый менеджер (скоро)<span title='Обновить вкладку Файловый менеджер' class='refresh fa fa-refresh ui-state-disabled refresh-fe pointer tab-icon'></span></a></li>
+					<li><a href='flashmem.php'><i class="fa fa-microchip fa-fw"></i> Менеджер флэш-памяти<span title='Обновить вкладку Менеджер флэш-памяти' class='refresh fa fa-refresh ui-state-disabled refresh-fm pointer tab-icon'></span></a></li>					
 					<li><a href='#tblog'><i class="fa fa-list-alt fa-fw"></i> Логи</a></li>
 				</ul>
 				<div id="toolset">
-					<h2 align='right' class='tab-header'>PS3 Toolset MOD <span class='header-tiny-text'>v1.1.004</span></h2>
+					<h2 align='right' class='tab-header'>PS3 Toolset MOD <span class='header-tiny-text'>v1.2.001</span></h2>
 					<div class='intro-table'>
 						<div class='box-table' style="max-height:620px;min-height:600px;height:620px;">
 							<div class='box-cell-30 '>
@@ -791,9 +791,9 @@
 								<div>
 									<div align='left' class='wrap-don'>
 									<br/><br/>
-										10/06/2022 Обновление v1.1.004
+										03/12/2024 Обновление v1.2.001
 										<ul class="fa-ul">
-											<li><i class="fa-li fa fa-chevron-circle-right"></i>Добавлена поддержка 4.89 CEX<br/></li>
+											<li><i class="fa-li fa fa-chevron-circle-right"></i>Добавлена поддержка 4.82-4.91 CEX<br/></li>
 											<li><i class="fa-li fa fa-chevron-circle-right"></i>Flash NC эксплоит обновление v3.0<br/></li>
 											<li><i class="fa-li fa fa-chevron-circle-right"></i>Менеджер флэш-памяти обновление v1.3.1<br/></li>
 											<li><i class="fa-li fa fa-chevron-circle-right"></i>JavaScript фреймворк обновление v4.2<br/></li>
@@ -828,8 +828,7 @@
 											<li><i class="fa-li fa fa-chevron-circle-right" style="line-height:18px;"></i>Плагин браузера PS3 Flash Player 9 включен<br/></li>
 											<li><i class="fa-li fa fa-chevron-circle-right" style="line-height:18px;"></i>В браузере PS3 включен Javascript<br/></li>
 											<li><i class="fa-li fa fa-chevron-circle-right" style="line-height:18px;"></i>Файлы cookie браузера PS3 включены<br/></li>
-											<li><i class="fa-li fa fa-chevron-circle-right" style="line-height:18px;"></i>Прошивка PS3: 4.89<br/></li>
-											<li><i class="fa-li fa fa-chevron-circle-right" style="line-height:18px;"></i>Для прошивок 4.80-4.88 перейдите по адресу: <a href="https://www.ps3xploit.net/bgtoolset/" title="PlayStation 3 Toolset by @bguerville">PlayStation 3 Toolset by @bguerville</a><br/></li>
+											<li><i class="fa-li fa fa-chevron-circle-right" style="line-height:18px;"></i>Прошивка PS3: 4.82-4.91<br/></li>											
 											<li><i class="fa-li fa fa-chevron-circle-right" style="line-height:18px;"></i>Типы прошивок PS3: OFW/HFW/MFW/CFW<br/></li>
 											<li><i class="fa-li fa fa-chevron-circle-right" style="line-height:18px;"></i>Режимы прошивок PS3: CEX/DEX<br/></li>
 											<li><i class="fa-li fa fa-chevron-circle-right" style="line-height:18px;"></i>Системное время PS3 установлено точно<br/></li>
@@ -886,7 +885,7 @@
 				</div>
 			</div>
 			<div id='tblog' class="tb-log" style="max-height:90%;">
-				<h2 align='right'  class='tab-header'>Логи <span class='header-tiny-text'>v1.1</span></h2>
+				<h2 align='right'  class='tab-header'>Логи <span class='header-tiny-text'>v1.2</span></h2>
 				<div class="max-height-620">
 					<table class="window">
 						<tbody class=''>

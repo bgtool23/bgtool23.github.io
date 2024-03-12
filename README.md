@@ -1,12 +1,10 @@
 # bgtoolset
 
-[bgtoolset 4.89](https://pspx.ru/forum/bgtoolset) (рабочий сайт)
-
 This is a dump of excellent Ps3xploit Team [bgtoolset](https://www.ps3xploit.net/bgtoolset/). **I'm not an author of any of these tools**, all credits go to
 Ps3xploit team.
 
 <p align="center">
-<b>Supported versions: 4.80 - 4.89</b>
+<b>Supported versions: 4.82 - 4.91</b>
 </p>
 
 ## IMPORTANT INFO, please read carefuly.
