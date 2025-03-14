@@ -1,1 +1,1 @@
-not available
+not available / не доступно
