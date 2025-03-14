@@ -1,7 +1,7 @@
 # bgtoolset
 
-This is a dump of excellent Ps3xploit Team [bgtoolset](https://ps3toolset.com/). **I'm not an author of any of these tools**, all credits go to
-Ps3xploit team.
+This is a dump of excellent Ps3xploit Team [bgtoolset](https://ps3toolset.com/). 
+**I'm not an author of any of these tools**, all credits go to Ps3xploit team.
 
 <p align="center">
 <b>Supported versions: 4.82 - 4.92</b>
