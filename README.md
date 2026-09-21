@@ -4,7 +4,7 @@ This is a dump of excellent Ps3xploit Team [bgtoolset](https://ps3toolset.com/).
 **I'm not an author of any of these tools**, all credits go to Ps3xploit team.
 
 <p align="center">
-<b>Supported versions: 4.82 - 4.92</b>
+<b>Supported versions: 4.82 - 4.93</b>
 </p>
 
 ## IMPORTANT INFO, please read carefuly.
