@@ -78,12 +78,12 @@ $files = array(
     'type' => 'application/octet-stream',
     'kind' => 'bin',
   ),
-	'nofsm_patch_492.bin' => array(
+    'nofsm_patch_492.bin' => array(
     'path' => __DIR__ . '/files/nofsm_patch_492.bin',
     'type' => 'application/octet-stream',
     'kind' => 'bin',
   ),
-	'nofsm_patch_493.bin' => array(
+    'nofsm_patch_493.bin' => array(
     'path' => __DIR__ . '/files/nofsm_patch_493.bin',
     'type' => 'application/octet-stream',
     'kind' => 'bin',
